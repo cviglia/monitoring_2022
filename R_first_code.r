@@ -24,3 +24,19 @@ setwd("C:/lab/")
 
 # let's export our table
 write.table(streams, file="my_first_table.txt")
+
+# import a file
+read.table("my_first_table.txt")
+# let's assign it to an object inside R
+cvtable <- read.table("my_first_table.txt")
+
+# the first statistics for lazy beautiful people
+summary(cvtable)
+
+# Marta hates water
+# Marta wants info only about fishes
+summary(cvtable$fishes)
+
+# histogram
+hist(cvtable$fishes)
+hist(cvtable$water)
