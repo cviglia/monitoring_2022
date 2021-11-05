@@ -52,7 +52,12 @@ clb <- colorRampPalette(c("dark blue", "blue", "light blue"))(100)
 plot(l2011$B1_sre, col=clb)
 
 # plot both images in just one multiframe graph
+# one row, two columns
 par(mfrow=c(1,2))
 plot(l2011$B1_sre, col=clb)
 plot(l2011$B2_sre, col=clg)
 
+# two rows, one column
+par(mfrow=c(2,1))
+plot(l2011$B1_sre, col=clb)
+plot(l2011$B2_sre, col=clg)
