@@ -29,7 +29,7 @@ setwd("C:/lab/")
 # B3 is the reflectance in the red band
 # B4 is the reflectance in the NIR band
 
-# ....................................................................day 2
+# .................................................................... day 2
 
 library(raster)
 
@@ -61,3 +61,44 @@ plot(l2011$B2_sre, col=clg)
 par(mfrow=c(2,1))
 plot(l2011$B1_sre, col=clb)
 plot(l2011$B2_sre, col=clg)
+
+# .................................................................... day 3
+
+library(raster)
+
+setwd("C:/lab/")
+
+l2011 <- brick("p224r63_2011.grd")
+l2011
+
+plot(l2011$B1_sre)
+
+clb <- colorRampPalette(c("dark blue","blue","light blue"))(100)
+plot(l2011$B1_sre, col=clb)
+
+clg <- colorRampPalette(c("dark green", "green", "light green"))(100)
+plot(l2011$B2_sre, col=clg)
+
+par(mfrow=c(1,2))
+plot(l2011$B1_sre, col=clb)
+plot(l2011$B2_sre, col=clg)
+
+par(mfrow=c(2,1))
+plot(l2011$B1_sre, col=clb)
+plot(l2011$B2_sre, col=clg)
+
+clr <- colorRampPalette(c("dark red", "red", "pink"))(100)
+plot(l2011$B3_sre, col=clr)
+
+clnir <- colorRampPalette(c("red", "orange", "yellow"))(100)
+plot(l2011$B4_sre, col=clnir)
+
+par(mfrow=c(2,2))
+plot(l2011$B1_sre, col=clb)
+plot(l2011$B2_sre, col=clg)
+plot(l2011$B3_sre, col=clr)
+plot(l2011$B4_sre, col=clnir)
+
+dev.off()
+
+plotRGB(l2011, r=3, g=2, b=1, stretch="Lin")
