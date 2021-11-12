@@ -73,16 +73,19 @@ l2011
 
 plot(l2011$B1_sre)
 
+# plot the blue band using a blue colorRampPalette
 clb <- colorRampPalette(c("dark blue","blue","light blue"))(100)
 plot(l2011$B1_sre, col=clb)
 
 clg <- colorRampPalette(c("dark green", "green", "light green"))(100)
 plot(l2011$B2_sre, col=clg)
 
+# multiframe
 par(mfrow=c(1,2))
 plot(l2011$B1_sre, col=clb)
 plot(l2011$B2_sre, col=clg)
 
+# invert the number of rows and the number of columns
 par(mfrow=c(2,1))
 plot(l2011$B1_sre, col=clb)
 plot(l2011$B2_sre, col=clg)
@@ -93,6 +96,7 @@ plot(l2011$B3_sre, col=clr)
 clnir <- colorRampPalette(c("red", "orange", "yellow"))(100)
 plot(l2011$B4_sre, col=clnir)
 
+# Exercise: plot the first four bands with two rows and two columns
 par(mfrow=c(2,2))
 plot(l2011$B1_sre, col=clb)
 plot(l2011$B2_sre, col=clg)
