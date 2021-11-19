@@ -5,8 +5,13 @@
 library(raster)
 setwd("C:/lab/")  # windows
 
+# install.packages("rgdal")
+library(rgdal)
+
 # importing the data
 l1992 <- brick("defor1.jpg") # image 1992
 l1992
 
-# install.packages("rgdal")
+# Bands: defor1.1, defor1.2, defor1.3 
+# plot RGB
+plotRGB(l1992, r=1, g=2, b=3, stretch="Lin")
