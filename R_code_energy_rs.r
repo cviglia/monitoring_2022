@@ -8,3 +8,5 @@ setwd("C:/lab/")  # windows
 # importing the data
 l1992 <- brick("defor1.jpg") # image 1992
 l1992
+
+# install.packages("rgdal")
