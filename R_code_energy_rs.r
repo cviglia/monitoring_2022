@@ -61,6 +61,7 @@ plot(dvi1992, col=cl)
 plot(dvi2006, col=cl)
 plot(dvidif, col=cld)
 
+# creating a pdf
 pdf("energy.pdf")
 par(mfrow=c(3,2))
 plotRGB(l1992, r=1, g=2, b=3, stretch="Lin")
@@ -70,6 +71,7 @@ plot(dvi2006, col=cl)
 plot(dvidif, col=cld)
 dev.off() 
 
+# another pfd
 pdf("dvi.pdf")
 par(mfrow=c(3,1))
 plot(dvi1992, col=cl)
