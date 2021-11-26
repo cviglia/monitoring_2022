@@ -67,5 +67,6 @@ plot(en$EN_0001, col=cl)
 # plot(RGB)
 plotRGB(en, red=en01, green=en07, blue=en13, stretch="lin")
 
+pairs(en)
 
 
