@@ -101,7 +101,7 @@ cldif <- colorRampPalette(c('blue','white','red'))(100) #
 plot(ENdif, col=cldif)
 
 # automated processing source function
-
+source("script.txt")
 
 # pairs
 pairs(en)
