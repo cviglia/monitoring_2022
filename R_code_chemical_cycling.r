@@ -105,5 +105,3 @@ source("script.txt")
 
 # pairs
 pairs(en)
-
-
