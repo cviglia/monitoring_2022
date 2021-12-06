@@ -1,7 +1,7 @@
 # R_code_quantitative_estimates_land_cover
 
 library(raster)
-library(RStoolbox)
+library(RStoolbox) # classification
 library(ggplot2)
 
 # set working directory
@@ -28,7 +28,7 @@ l2006 <- list_rast[[2]]
 plotRGB(l2006, r=1, g=2, b=3, stretch="lin")
 
 # Unsupervised claffication
-l1992c <- unsuperClass(l1992, nClasses=2)
+l1992c <- unsuperClass(l1992, nClasses=2)  # unsuperClass(x, nClasses)
 
 plot(l1992c$map)
 # value 1 = agricultural areas and water
@@ -49,9 +49,16 @@ propforest <- 305276 / 341292      # 0.89
 
 # build a dataframe
 cover <- c("forest", "agriculture")
-prop1992 <- c(0.8944716,  0.1055284)
+prop1992 <- c(propforest,  propagri)  # that means: prop1992 <- c(0.8944716,  0.1055284)
 
 proportion1992 <- data.frame(cover, prop1992)
 
 ggplot(proportion1992, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
+
+
+
+
+
+
+
 
