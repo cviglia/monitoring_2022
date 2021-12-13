@@ -14,7 +14,7 @@ rlist <- list.files(pattern="defor")
 rlist
 
 # 2 lapply: apply a function to a list
-list_rast <- lapply(rlist, brick)
+list_rast <- lapply(rlist, brick) # lapply(x, FUN)
 list_rast
 
 plot(list_rast[[1]])
@@ -49,8 +49,15 @@ propagri <- 36016 / 341292         # ~ 0.11
 propforest <- 305276 / 341292      # ~ 0.89
 
 # build a dataframe
-cover <- c("forest", "agriculture")
-prop1992 <- c(propforest,  propagri)  # that means: prop1992 <- c(0.8944716,  0.1055284)
+cover <- c("Forest", "Agriculture")
+# prop1992 <- c(0.8982982, 0.1017018)
+prop1992 <- c(propforest, propagri)
+ 
+proportion1992 <- data.frame(cover, prop1992)
+
+# build a dataframe, orig vers
+# cover <- c("forest", "agriculture")
+# prop1992 <- c(propforest,  propagri)  # that means: prop1992 <- c(0.8944716,  0.1055284)
 
 proportion1992 <- data.frame(cover, prop1992)
 
@@ -76,19 +83,71 @@ total <- 342726
 propagri2006 <- 164501/342726    # 0.4799782    ~ 0.48
 propforest2006 <- 178225/342726    # 0.5200218  ~ 0.52
 
-# build a dataframe
-cover <- c("forest", "agriculture")
-prop2006 <- c(propforest2006,  propagri2006) 
 
-proportion2006 <- data.frame(cover, prop2006)
+# build a dataframe, right one
+cover <- c("Forest", "Agriculture")
+prop1992 <- c(propforest, propagri)
+prop2006 <- c(propforest2006, propagri2006)
+ 
 proportion <- data.frame(cover, prop1992, prop2006)
+proportion
 
-ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
+# build a dataframe, orig vers
+# cover <- c("forest", "agriculture")
+# prop2006 <- c(propforest2006,  propagri2006) 
 
-p1 <- ggplot(proportion1992, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
-p2 <- ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
+# proportion2006 <- data.frame(cover, prop2006)
+# proportion <- data.frame(cover, prop1992, prop2006)
+
+# ggplot, right one
+ggplot(proportion1992, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
+
+# ggplot, orig vers
+# ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
 
 grid.arrange(p1, p2, nrows=1)
 
+#.............................................. new
+
+p1 <- ggplot(proportion, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white") + ylim(0,1)
+p2 <- ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white") + ylim(0,1)
+
+install.packages("patchwork")
+library(patchwork)
+
+# one graph on the top of another
+p1+p2
+
+l1992 <- list_rast[[1]]
+l1992
+
+# instead of plotRGB, we are using ggRGB
+plotRGB(l1992, r=1, g=2, b=3, stretch="Lin")
+ggRGB(l1992, r=1, g=2, b=3)
+ggRGB(l1992, r=1, g=2, b=3, stretch="lin")
+ggRGB(l1992, r=1, g=2, b=3, stretch="hist")
+ggRGB(l1992, r=1, g=2, b=3, stretch="sqrt")
+ggRGB(l1992, r=1, g=2, b=3, stretch="log")
+
+# log in base 2
+log(100)
+
+# patchwork
+gp1 <- ggRGB(l1992, r=1, g=2, b=3, stretch="lin")
+gp2 <- ggRGB(l1992, r=1, g=2, b=3, stretch="hist")
+gp3 <- ggRGB(l1992, r=1, g=2, b=3, stretch="sqrt")
+gp4 <- ggRGB(l1992, r=1, g=2, b=3, stretch="log")
+
+gp1+gp2+gp3+gp4
+
+l2006 <- list_rast[[2]]
+
+# multitemporal patchwork
+gp1 <- ggRGB(l1992, r=1, g=2, b=3)
+gp5 <- ggRGB(l2006, r=1, g=2, b=3)
+ 
+gp1 + gp5
+
+gp1 / gp5
 
 
