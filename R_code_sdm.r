@@ -50,6 +50,32 @@ points(presences, pch=19)
 plot(preds$vegetation, col=cl)
 points(presences, pch=19)
 
+# ........................................................................................... 
+
+library(sdm)
+library(raster)
+library(rgdal)
+
+setwd("C:/lab/")
+
+source("R_code_source_sdm.r") # graphs will appear
+
+# in the theoretical slide of sdms we should use individuals of a species and predictors
+preds
+# predictors are: elevation, precipitation, temperature, vegetation
+
+sdmData(train=species, predictors=preds)
+
+# set the data for the sdm
+datasdm <- sdmData(train=species, predictors=preds)
+
+# model
+m1 <- sdm(Occurrence~temperature+elevation+precipitation+vegetation, data=datasdm, methods="glm")
+m1
 
 
+                   
+                   
+                   
+                   
 
