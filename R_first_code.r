@@ -9,17 +9,18 @@ fishes <-c (10, 50, 60, 100, 200)
 
 # plot the diversity of fishes (y) versus the amount of water (x)
 # a function is used with arguments inside ()
-# plot(water, fishes)
+plot(water, fishes)
 
 # the data we developed can be stored in a table
 # a table in R is called data frame
 
 streams <- data.frame(water, fishes)
+streams
 
 View(streams)
 
-# we are going to export
-# setwd("C:/lab/")
+# we are going to export and import data
+# setwd for Windows
 setwd("C:/lab/")
 
 # let's export our table
