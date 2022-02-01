@@ -1,5 +1,7 @@
 # R code for chemical cycling study
 # time series of NO2 change in Europe during the lockdown
+# https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-5P/Coronavirus_lockdown_leading_to_drop_in_pollution_across_Europe
+# https://acp.copernicus.org/preprints/acp-2020-995/acp-2020-995.pdf
 
 library(raster)
 
@@ -9,6 +11,8 @@ setwd("C:/lab/en/")
 en01 <- raster("EN_0001.png")
 en01
 # range of data? 0, 255
+# https://www.google.com/search?q=R+colours+names&tbm=isch&ved=2ahUKEwiF-77Z1bX0AhULtKQKHQ3WDWYQ2-cCegQIABAA&oq=R+colours+names&gs_lcp=CgNpbWcQAzIECAAQEzoHCCMQ7wMQJzoICAAQCBAeEBNQiQhYnwxgwg1oAHAAeACAAUqIAZYDkgEBNpgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=vKKgYYWtOovokgWNrLewBg&bih=526&biw=1056#imgrc=OtMzJfyT_OwIiM
+cl <- colorRampPalette(c('red','orange','yellow'))(100) # 
 
 # plot theNO2 values of january
 cl <- colorRampPalette(c("red","orange","yellow"))(100) # 
