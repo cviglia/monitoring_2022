@@ -30,6 +30,7 @@ library(rgdal)
 setwd("C:/lab/")  # windows
 
 l2006 <- brick ("defor2.jpg") # image 2006
+# plotting the imported image
 plotRGB(l2006, r=1, g=2, b=3, stretch="Lin")
 
 par(mfrow=c(2,1))
