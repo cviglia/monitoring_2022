@@ -1,9 +1,14 @@
 # R code for uploading and visualizing Copernicus data in Rlibrary(ncdf4)
+
+# install.packages("ncdf4")
+# install.packages("viridis")
 library(ncdf4)
 library(raster)
 library(ggplot2)
 library(viridis)
 library(RStoolbox)
+library(patchwork)
+
 
 # set the working directory
 setwd("C:/lab//copernicus/") 
@@ -32,6 +37,8 @@ ggplot() + geom_raster(leaf01052020, mapping = aes(x = x, y = y, fill = Leaf.Are
 + scale_fill_viridis(option = "cividis") +  ggtitle("cividis palette")
 
 # ..........................................................................................
+
+# importing all the data together with the lapply function
 
 library(ncdf4)
 library(raster)
