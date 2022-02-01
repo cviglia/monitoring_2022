@@ -3,6 +3,7 @@
 # raster package to manage image data
 # https://cran.r-project.org/web/packages/raster/index.html
 
+#install packages 
 install.packages("raster")
 
 library(raster)
@@ -13,6 +14,7 @@ setwd("C:/lab/")
 # objects cannot be numbers
 l2011 <- brick("p224r63_2011.grd")
 
+#show map
 l2011
 plot(l2011)
 
