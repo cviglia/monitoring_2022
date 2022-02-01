@@ -8,6 +8,7 @@ install.packages("raster")
 
 library(raster)
 
+# Set the working directory
 setwd("C:/lab/")
 
 # we are going to import satellite data
@@ -18,18 +19,17 @@ l2011 <- brick("p224r63_2011.grd")
 l2011
 plot(l2011)
 
-cl <- colorRampPalette(c("black", "grey", "light grey"))(100)
-plot(l2011, col=cl)
-
-plotRGB(l2011, r=3, g=2, b=1, stretch="Lin")
-
-# set the working directory
-setwd("C:/lab/")
 
 # B1 is the reflectance in the blue band
 # B2 is the reflectance in the green band
 # B3 is the reflectance in the red band
 # B4 is the reflectance in the NIR band
+
+cl <- colorRampPalette(c("black", "grey", "light grey"))(100)
+plot(l2011, col=cl)
+
+plotRGB(l2011, r=3, g=2, b=1, stretch="Lin")
+
 
 # .................................................................... day 2
 
@@ -40,6 +40,7 @@ setwd("C:/lab/")
 l2011
 plot(l2011)
 
+# let's plot the green band
 plot(l2011$B2_sre)
 
 cl <- colorRampPalette(c("black", "grey", "light grey"))(100)
