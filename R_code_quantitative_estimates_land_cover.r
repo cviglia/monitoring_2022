@@ -1,9 +1,9 @@
 # R_code_quantitative_estimates_land_cover
 
 library(raster)
-library(RStoolbox) # classification
-library(ggplot2)
-library(gridExtra) # multiframe ggplot
+library(RStoolbox) # we will use this package to make the classification
+library(ggplot2) # we will use this package for the ggplot function
+library(gridExtra) # we will use this package for multiframe ggplot
 
 # set working directory
 setwd("C:/lab/") 
@@ -121,6 +121,7 @@ p1+p2
 l1992 <- list_rast[[1]]
 l1992
 
+# patchworkn is working even with raster data, but they should be plotted with the ggplot2 package
 # instead of plotRGB, we are using ggRGB
 plotRGB(l1992, r=1, g=2, b=3, stretch="Lin")
 ggRGB(l1992, r=1, g=2, b=3)
