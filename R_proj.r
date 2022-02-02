@@ -128,8 +128,34 @@ plot(veg1_cropped <- crop(veg20140101, ext))
 
 
 veg <- stack(veg1_cropped, veg2_cropped, veg3_cropped, veg4_cropped, veg5_cropped, veg6_cropped, veg7_cropped, veg8_cropped)
+plot(veg)
 
+par(mfrow=c(2,4))
+plot(veg1_cropped, main="2014")
+plot(veg2_cropped, main="2015")
+plot(veg3_cropped, main="2016")
+plot(veg4_cropped, main="2017")
+plot(veg5_cropped, main="2018")
+plot(veg6_cropped, main="2019")
+plot(veg7_cropped, main="2020")
+plot(veg8_cropped, main="2021")
 
+legend(x, y,   # Coordinates (x also accepts keywords)
+       legend, # Vector with the name of each group
+       fill,   # Creates boxes in the legend with the specified colors
+       col = par("col"), # Color of lines or symbols
+       border = "black", # Fill box border color
+       lty, lwd,         # Line type and width
+       pch,              # Add pch symbols to legend lines or boxes
+       bty = "o",        # Box type (bty = "n" removes the box)
+       bg = par("bg")    # Background color of the legend
+       box.lwd = par("lwd"), # Legend box line width
+       box.lty = par("lty"), # Legend box line type
+       box.col = par("fg"),  # Legend box line color
+       cex = 1,          # Legend size
+       horiz = FALSE     # Horizontal (TRUE) or vertical (FALSE) legend
+       title = NULL      # Legend title
+)
 
 
 
