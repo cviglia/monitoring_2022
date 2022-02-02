@@ -1,5 +1,7 @@
-# R code for measuring community interactions!
+# R code for measuring community interactions
+# R_code_multivar.r
 
+# install.packages("vegan")
 install.packages("vegan")
 library(vegan)
 
