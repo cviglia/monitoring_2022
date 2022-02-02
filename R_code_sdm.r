@@ -1,10 +1,10 @@
-# R code for Species Distribution Modelling
+# R code for Species Distribution Modelling, namely the distribution of individuals of a population in space
 
 install.packages("sdm")
 
 library(sdm)
 library(raster) # predictors
-library(rgdal) # species
+library(rgdal) # species: an array of x,y points x0,y0, x1y1...
 
 # species data
 file <- system.file("external/species.shp", package="sdm")
@@ -32,6 +32,7 @@ path
 lst <- list.files(path, pattern='asc', full.names=T)
 
 # stack
+# you can use the lapply function with the raster function but in this case it is not needed since the data are inside the package and they have an asc extension
 preds <- stack(lst)
 
 # col
