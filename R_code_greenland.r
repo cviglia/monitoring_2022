@@ -1,3 +1,6 @@
+# R_code_greenland.r
+
+# Time series analysis
 # ice melt in Greenland
 # proxy: LST
 
@@ -10,6 +13,7 @@ library(viridis)
 # set the workind directory
 setwd("C:/lab/greenland/")
 
+# list f files:
 rlist <- list.files(pattern = "lst")
 rlist
 
@@ -19,6 +23,7 @@ import
 tgr <- stack(import)
 tgr
 
+#levelplot(TGr)
 cl <- colorRampPalette(c("blue","light blue","pink","yellow"))(100)
 plot(tgr, col=cl)
 
