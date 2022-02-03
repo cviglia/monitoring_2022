@@ -27,7 +27,6 @@
 
 
 library(raster)
-library(RStoolbox)
 
 setwd("C:/lab//copernicus/") 
 
