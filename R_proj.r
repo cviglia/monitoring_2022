@@ -26,13 +26,8 @@
 # and human activities (e.g. clearing and planting forests, sowing and harvesting crops, burning rangeland). It is a sensitive indicator of environmental vulnerability. 
 
 
-library(ncdf4)
 library(raster)
-library(ggplot2)
-library(viridis)
 library(RStoolbox)
-library(patchwork)
-library(gridExtra)
 
 setwd("C:/lab//copernicus/") 
 
@@ -171,7 +166,7 @@ veg1b_cropped <- crop(veg20150701, ext)
 vegwin <- stack(veg1_cropped, veg2_cropped, veg3_cropped, veg4_cropped, veg5_cropped, veg6_cropped)
 plot(vegwin)
 
-vegsum <- stack((veg1b_cropped, veg2b_cropped, veg3b_cropped, veg4b_cropped, veg5b_cropped, veg6b_cropped)
+vegsum <- stack(veg1b_cropped, veg2b_cropped, veg3b_cropped, veg4b_cropped, veg5b_cropped, veg6b_cropped)
 plot(vegsum)
 
                 
