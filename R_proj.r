@@ -135,7 +135,7 @@ veg20160101
 plot(veg20160101)
 
 # raster jul
-veg20160701 <- raster("")
+veg20160701 <- raster("c_gls_NDVI300_201607010000_GLOBE_PROBAV_V1.0.1.nc")
 veg20160701
 plot(veg20160701)
 
@@ -180,36 +180,43 @@ plot(vegwin)
 vegsum <- stack((veg1b_cropped, veg2b_cropped, veg3b_cropped, veg4b_cropped, veg5b_cropped, veg6b_cropped)
 plot(vegsum)
 
-
-par(mfrow=c(2,3))
-plot(veg1_cropped, main="winter 2015")
-plot(veg2_cropped, main="winter 2016")
-plot(veg3_cropped, main="winter 2017")
-plot(veg4_cropped, main="winter 2018")
-plot(veg5_cropped, main="winter 2019")
-plot(veg6_cropped, main="winter 2020")
-
-par(mfrow=c(2,3))
-plot(veg1b_cropped, main="summer 2015")
-plot(veg2b_cropped, main="summer 2016")
-plot(veg3b_cropped, main="summer 2017")
-plot(veg4b_cropped, main="summer 2018")
-plot(veg5b_cropped, main="summer 2019")
-plot(veg6b_cropped, main="summer 2020")                
                 
-par(mfrow=c(6,2))
-plot(veg1_cropped, main="winter 2015")
-plot(veg1b_cropped, main="summer 2015")
-plot(veg2_cropped, main="winter 2016")
-plot(veg2b_cropped, main="summer 2016")
-plot(veg3_cropped, main="winter 2017")
-plot(veg3b_cropped, main="summer 2017")
-plot(veg4_cropped, main="winter 2018")
-plot(veg4b_cropped, main="summer 2018")
-plot(veg5_cropped, main="winter 2019")
-plot(veg5b_cropped, main="summer 2019")
-plot(veg6_cropped, main="winter 2020")
-plot(veg6b_cropped, main="summer 2020")                
+# winter veg
+par(mfrow=c(2,3))
+plot(veg1_cropped, main="winter_2015")
+plot(veg2_cropped, main="winter_2016")
+plot(veg3_cropped, main="winter_2017")
+plot(veg4_cropped, main="winter_2018")
+plot(veg5_cropped, main="winter_2019")
+plot(veg6_cropped, main="winter_2020")
+
+# summer veg                
+par(mfrow=c(2,3))
+plot(veg1b_cropped, main="summer_2015")
+plot(veg2b_cropped, main="summer_2016")
+plot(veg3b_cropped, main="summer_2017")
+plot(veg4b_cropped, main="summer_2018")
+plot(veg5b_cropped, main="summer_2019")
+plot(veg6b_cropped, main="summer_2020")                
+ 
+# first half   
+par(mfrow=c(3,2))
+plot(veg1_cropped, main="winter_2015")
+plot(veg1b_cropped, main="summer_2015")
+plot(veg2_cropped, main="winter_2016")
+plot(veg2b_cropped, main="summer_2016")
+plot(veg3_cropped, main="winter_2017")
+plot(veg3b_cropped, main="summer_2017")
+                
+# second half                              
+par(mfrow=c(3,2))              
+plot(veg4_cropped, main="winter_2018")
+plot(veg4b_cropped, main="summer_2018")
+plot(veg5_cropped, main="winter_2019")
+plot(veg5b_cropped, main="summer_2019")
+plot(veg6_cropped, main="winter_2020")
+plot(veg6b_cropped, main="summer_2020")                
+
              
              
 
@@ -224,100 +231,159 @@ alb20200124 <- raster("c_gls_ALDH_202001240000_GLOBE_PROBAV_V1.5.1.nc")
 alb20200124
 plot(alb20200124)
                 
-
+# raster jun
+alb20200613 <- raster("c_gls_ALDH_202006130000_GLOBE_PROBAV_V1.5.1.nc")
+alb20200613
+plot(alb20200613)                
 
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb6_cropped <- crop(alb20200124, ext)
 plot(alb6_cropped <- crop(alb20200124, ext))
 
-
+# crop jun
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+alb6b_cropped <- crop(alb20200613, ext)
+plot(alb6b_cropped <- crop(alb20200613, ext))
+                
+                
 ######### 2019 alb
-# raster
+# raster jen
 alb20190124 <- raster("c_gls_ALDH_201901240000_GLOBE_PROBAV_V1.5.1.nc")
 alb20190124
 plot(alb20190124)
-
-# crop
+                
+# raster jun
+alb20190623 <- raster("c_gls_ALDH_201906230000_GLOBE_PROBAV_V1.5.1.nc")
+alb20190623
+plot(alb20190623)
+                
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb5_cropped <- crop(alb20190124, ext)
 plot(alb5_cropped <- crop(alb20190124, ext))
 
+# crop jun
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+alb5b_cropped <- crop(alb20190623, ext)
+plot(alb5b_cropped <- crop(alb20190623, ext))
+                
 
 ######### 2018 alb
-# raster
+# raster jen
 alb20180124 <- raster("c_gls_ALDH_201801240000_GLOBE_PROBAV_V1.5.1.nc")
 alb20180124
 plot(alb20180124)
 
-# crop
+# raster jul
+                
+
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb4_cropped <- crop(alb20180124, ext)
 plot(alb4_cropped <- crop(alb20180124, ext))
 
+# crop jul
+                
 
 ######### 2017 alb
-# raster
+# raster jen
 alb20170124 <- raster("c_gls_ALDH_201701240000_GLOBE_PROBAV_V1.5.1.nc")
 alb20170124
 plot(alb20170124)
+                
+# raster jul
+                
 
-# crop
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb3_cropped <- crop(alb20170124, ext)
 plot(alb3_cropped <- crop(alb20170124, ext))
+                
+# crop jul
+                
 
 
 ######### 2016 alb
-# raster
+# raster jen
 alb20160124 <- raster("c_gls_ALDH_201601240000_GLOBE_PROBAV_V1.5.1.nc")
 alb20160124
 plot(alb20160124)
-# crop
+
+# raster jul
+                
+                
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb2_cropped <- crop(alb20160124, ext)
 plot(alb2_cropped <- crop(alb20160124, ext))
 
+# crop jul
+                
 
 ######### 2015 alb
-# raster
+# raster jen
 alb20150124 <- raster("c_gls_ALDH_201501240000_GLOBE_PROBAV_V1.5.1.nc")
 alb20150124
 plot(alb20150124)
-# crop
+                
+# raster jul
+                
+                
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb1_cropped <- crop(alb20150124, ext)
 plot(alb1_cropped <- crop(alb20150124, ext))
 
+                
+# crop jul                
 
 
-alb <- stack(alb1_cropped, alb2_cropped, alb3_cropped, alb4_cropped, alb5_cropped, alb6_cropped)
-plot(alb)
+albwin <- stack(alb1_cropped, alb2_cropped, alb3_cropped, alb4_cropped, alb5_cropped, alb6_cropped)
+plot(albwin)
+                
+albsum <- stack(alb1b_cropped, alb2b_cropped, alb3b_cropped, alb4b_cropped, alb5b_cropped, alb6b_cropped)              
+albsum
+                
+
+# winter alb
+par(mfrow=c(2,3))
+plot(alb1_cropped, main="winter_2015")
+plot(alb2_cropped, main="winter_2016")
+plot(alb3_cropped, main="winter_2017")
+plot(alb4_cropped, main="winter_2018")
+plot(alb5_cropped, main="winter_2019")
+plot(alb6_cropped, main="winter_2020")
 
 
-
-par(mfrow=c(2,4))
-plot(alb1_cropped, main="2015")
-plot(alb2_cropped, main="2016")
-plot(alb3_cropped, main="2017")
-plot(alb4_cropped, main="2018")
-plot(alb5_cropped, main="2019")
-plot(alb6_cropped, main="2020")
-
-
-pdf()
-par(mfrow=c(2,2))
-plot(alb1_cropped, main="2015")
-plot(alb2_cropped, main="2016")
-plot(alb3_cropped, main="2017")
-
-plot(alb4_cropped, main="2018")
-plot(alb5_cropped, main="2019")
-plot(alb6_cropped, main="2020")
-dev.off()
+# summer alb
+par(mfrow=c(2,3))
+plot(alb1b_cropped, main="summer_2015")
+plot(alb2b_cropped, main="summer_2016")
+plot(alb3b_cropped, main="summer_2017")
+plot(alb4b_cropped, main="summer_2018")
+plot(alb5b_cropped, main="summer_2019")
+plot(alb6b_cropped, main="summer_2020")                
 
 
-
+# first half
+par(mfrow=c(3,2))
+plot(alb1_cropped, main="winter_2015")
+plot(alb1b_cropped, main="summer_2015")
+plot(alb2_cropped, main="winter_2016")
+plot(alb2b_cropped, main="summer_2016")
+plot(alb3_cropped, main="winter_2017") 
+plot(alb3b_cropped, main="summer_2017")
+               
+                
+# second half
+par(mfrow=c(3,2))
+plot(alb4_cropped, main="winter_2018")
+plot(alb4b_cropped, main="summer_2018")
+plot(alb5_cropped, main="winter_2019")
+plot(alb5b_cropped, main="summer_2019")
+plot(alb6_cropped, main="winter_2020")
+plot(alb6b_cropped, main="summer_2020")                
 
 
 
