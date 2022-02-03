@@ -1,3 +1,39 @@
+######### 2021 veg
+# raster
+veg20210101 <- raster("c_gls_NDVI300_202101010000_GLOBE_PROBAV_V1.0.1.nc")
+veg20210101
+plot(veg20210101)
+
+#crop
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+veg8_cropped <- crop(veg20210101, ext)
+plot(veg8_cropped <- crop(veg20210101, ext))
+# plot(veg8_cropped, col=cl)
+
+######### 2014 veg
+# raster
+veg20140101 <- raster("c_gls_NDVI300_201401010000_GLOBE_PROBAV_V1.0.1.nc")
+veg20140101
+plot(veg20140101)
+
+# crop
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+veg1_cropped <- crop(veg20140101, ext)
+plot(veg1_cropped <- crop(veg20140101, ext))
+# plot(veg1_cropped, col=cl)
+
+######### 2014 alb
+# raster
+alb20140124 <- raster("c_gls_ALDH_201401240000_GLOBE_VGT_V1.4.1.nc")
+alb20140124
+plot(alb20140124)
+# crop
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+alb1_cropped <- crop(alb20140124, ext)
+plot(alb1_cropped <- crop(alb20140124, ext))
+
+
+
 
 # cividis
 # ggplot() + geom_raster(veg8_cropped, mapping = aes(x = x, y = y, fill =  Normalized.Difference.Vegetation.Index.333M)) + scale_fill_viridis(option = "cividis") +  ggtitle("veg8_cropped cividis")
