@@ -37,109 +37,181 @@ library(gridExtra)
 setwd("C:/lab//copernicus/") 
 
 ######### 2020 veg
-# raster
+# raster jen
 veg20200101 <- raster("c_gls_NDVI300_202001010000_GLOBE_PROBAV_V1.0.1.nc")
 veg20200101
 plot(veg20200101)
 
-veg20200701 <- raster
+# raster jul
+veg20200701 <- raster("c_gls_NDVI300_202007010000_GLOBE_PROBAV_V1.0.1.nc")
+veg20200701
+plot(veg20200701)
 
-# crop
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg6_cropped <- crop(veg20200101, ext)
 plot(veg6_cropped <- crop(veg20200101, ext))
 # plot(veg6_cropped, col=cl)
 
+# crop jul
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+veg6b_cropped <- crop(veg20200701, ext)
+plot(veg6b_cropped <- crop(veg20200701, ext))
+
 
 ######### 2019 veg
-# raster
+# raster jen
 veg20190101 <- raster("c_gls_NDVI300_201901010000_GLOBE_PROBAV_V1.0.1.nc")
 veg20190101
 plot(veg20190101)
 
-# crop
+# raster jul
+veg20190701 <- raster("c_gls_NDVI300_201907010000_GLOBE_PROBAV_V1.0.1.nc")
+veg20190701
+plot(veg20190701)
+
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
-veg4_cropped <- crop(veg20190101, ext)
+veg5_cropped <- crop(veg20190101, ext)
 plot(veg5_cropped <- crop(veg20190101, ext))
 # plot(veg5_cropped, col=cl)
 
+# crop jul
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+veg5b_cropped <- crop(veg20190701, ext)
+plot(veg5b_cropped <- crop(veg20190701, ext))
+
 
 ######### 2018 veg
-# raster
+# raster jen
 veg20180101 <- raster("c_gls_NDVI300_201801010000_GLOBE_PROBAV_V1.0.1.nc")
 veg20180101
 plot(veg20180101)
 
-# crop
+# raster jul
+veg20180701 <- raster("c_gls_NDVI300_201807010000_GLOBE_PROBAV_V1.0.1.nc")
+veg20180701
+plot(veg20180701)
+
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg4_cropped <- crop(veg20180101, ext)
 plot(veg4_cropped <- crop(veg20180101, ext))
 # plot(veg4_cropped, col=cl)
 
+# crop jul
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+veg4b_cropped <- crop(veg20180701, ext)
+plot(veg4b_cropped <- crop(veg20180701, ext))
+
 
 ######### 2017 veg
-# raster
+# raster jen
 veg20170101 <- raster("c_gls_NDVI300_201701010000_GLOBE_PROBAV_V1.0.1.nc")
 veg20170101
 plot(veg20170101)
 
-# crop
+# raster jul
+veg20170701 <- raster("c_gls_NDVI300_201707010000_GLOBE_PROBAV_V1.0.1.nc")
+veg20170701
+plot(veg20170701)
+
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg3_cropped <- crop(veg20170101, ext)
 plot(veg3_cropped <- crop(veg20170101, ext))
 # plot(veg3_cropped, col=cl)
 
+# crop jul
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+veg3b_cropped <- crop(veg20170701, ext)
+plot(veg3b_cropped <- crop(veg20170701, ext))
+
 
 ######### 2016 veg
-# raster
+# raster jen
 veg20160101 <- raster("c_gls_NDVI300_201601010000_GLOBE_PROBAV_V1.0.1.nc")
 veg20160101
 plot(veg20160101)
 
-# crop
+# raster jul
+veg20160701 <- raster("")
+veg20160701
+plot(veg20160701)
+
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg2_cropped <- crop(veg20160101, ext)
 plot(veg2_cropped <- crop(veg20160101, ext))
 # plot(veg2_cropped, col=cl)
 
+# crop jul
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+veg2b_cropped <- crop(veg20160701, ext)
+plot(veg2b_cropped <- crop(veg20160701, ext))
+
 
 ######### 2015 veg
-# raster
+# raster jen
 veg20150101 <- raster("c_gls_NDVI300_201501010000_GLOBE_PROBAV_V1.0.1.nc")
 veg20150101
 plot(veg20150101)
 
-# crop
+#raster jul
+veg20150701 <- raster("c_gls_NDVI300_201507010000_GLOBE_PROBAV_V1.0.1.nc")
+veg20150701
+plot(veg20150701)
+
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg1_cropped <- crop(veg20150101, ext)
 plot(veg1_cropped <- crop(veg20150101, ext))
 # plot(veg1_cropped, col=cl)
 
+# crop jul
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+veg1b_cropped <- crop(veg20150701, ext)
+plot(veg1b_cropped <- crop(veg20150701, ext))
 
 
-veg <- stack(veg1_cropped, veg2_cropped, veg3_cropped, veg4_cropped, veg5_cropped, veg6_cropped)
-plot(veg)
+vegwin <- stack(veg1_cropped, veg2_cropped, veg3_cropped, veg4_cropped, veg5_cropped, veg6_cropped)
+plot(vegwin)
 
+vegsum <- stack((veg1b_cropped, veg2b_cropped, veg3b_cropped, veg4b_cropped, veg5b_cropped, veg6b_cropped)
+plot(vegsum)
 
-pdf()
-par(mfrow=c(2,2))
-plot(veg1_cropped, main="2015")
-plot(veg2_cropped, main="2016")
-plot(veg3_cropped, main="2017")
-
-par(mfrow=c(2,2))
-plot(veg4_cropped, main="2018")
-plot(veg5_cropped, main="2019")
-plot(veg6_cropped, main="2020")
-dev.off()
 
 par(mfrow=c(2,3))
-plot(veg1_cropped, main="2015")
-plot(veg2_cropped, main="2016")
-plot(veg3_cropped, main="2017")
-plot(veg4_cropped, main="2018")
-plot(veg5_cropped, main="2019")
-plot(veg6_cropped, main="2020")
+plot(veg1_cropped, main="winter 2015")
+plot(veg2_cropped, main="winter 2016")
+plot(veg3_cropped, main="winter 2017")
+plot(veg4_cropped, main="winter 2018")
+plot(veg5_cropped, main="winter 2019")
+plot(veg6_cropped, main="winter 2020")
+
+par(mfrow=c(2,3))
+plot(veg1b_cropped, main="summer 2015")
+plot(veg2b_cropped, main="summer 2016")
+plot(veg3b_cropped, main="summer 2017")
+plot(veg4b_cropped, main="summer 2018")
+plot(veg5b_cropped, main="summer 2019")
+plot(veg6b_cropped, main="summer 2020")                
+                
+par(mfrow=c(6,2))
+plot(veg1_cropped, main="winter 2015")
+plot(veg1b_cropped, main="summer 2015")
+plot(veg2_cropped, main="winter 2016")
+plot(veg2b_cropped, main="summer 2016")
+plot(veg3_cropped, main="winter 2017")
+plot(veg3b_cropped, main="summer 2017")
+plot(veg4_cropped, main="winter 2018")
+plot(veg4b_cropped, main="summer 2018")
+plot(veg5_cropped, main="winter 2019")
+plot(veg5b_cropped, main="summer 2019")
+plot(veg6_cropped, main="winter 2020")
+plot(veg6b_cropped, main="summer 2020")                
+             
+             
 
 
 ggplot(veg, aes(x=longitude, y=latitude, color=cover)) + geom_bar(stat="identity", fill="white")
@@ -147,12 +219,14 @@ ggplot(veg, aes(x=longitude, y=latitude, color=cover)) + geom_bar(stat="identity
 
 
 ######### 2020 alb
-# raster
+# raster jen
 alb20200124 <- raster("c_gls_ALDH_202001240000_GLOBE_PROBAV_V1.5.1.nc")
 alb20200124
 plot(alb20200124)
+                
 
-# crop
+
+# crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb6_cropped <- crop(alb20200124, ext)
 plot(alb6_cropped <- crop(alb20200124, ext))
