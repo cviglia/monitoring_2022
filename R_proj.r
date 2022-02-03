@@ -276,7 +276,9 @@ alb20180124
 plot(alb20180124)
 
 # raster jul
-                
+alb20180623 <- raster("c_gls_ALDH_201806230000_GLOBE_PROBAV_V1.5.1.nc")
+alb20180623
+plot(alb20180623)               
 
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
@@ -284,7 +286,9 @@ alb4_cropped <- crop(alb20180124, ext)
 plot(alb4_cropped <- crop(alb20180124, ext))
 
 # crop jul
-                
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+alb4b_cropped <- crop(alb20180623, ext)  
+plot(alb4b_cropped <- crop(alb20180623, ext))               
 
 ######### 2017 alb
 # raster jen
@@ -384,7 +388,6 @@ plot(alb5_cropped, main="winter_2019")
 plot(alb5b_cropped, main="summer_2019")
 plot(alb6_cropped, main="winter_2020")
 plot(alb6b_cropped, main="summer_2020")                
-
 
 
 
