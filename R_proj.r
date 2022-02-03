@@ -218,10 +218,6 @@ plot(veg6_cropped, main="winter_2020")
 plot(veg6b_cropped, main="summer_2020")                
 
              
-             
-
-
-ggplot(veg, aes(x=longitude, y=latitude, color=cover)) + geom_bar(stat="identity", fill="white")
 
 
 
@@ -275,7 +271,7 @@ alb20180124 <- raster("c_gls_ALDH_201801240000_GLOBE_PROBAV_V1.5.1.nc")
 alb20180124
 plot(alb20180124)
 
-# raster jul
+# raster jun
 alb20180623 <- raster("c_gls_ALDH_201806230000_GLOBE_PROBAV_V1.5.1.nc")
 alb20180623
 plot(alb20180623)               
@@ -285,7 +281,7 @@ ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb4_cropped <- crop(alb20180124, ext)
 plot(alb4_cropped <- crop(alb20180124, ext))
 
-# crop jul
+# crop jun
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb4b_cropped <- crop(alb20180623, ext)  
 plot(alb4b_cropped <- crop(alb20180623, ext))               
@@ -297,14 +293,17 @@ alb20170124
 plot(alb20170124)
                 
 # raster jul
+<- raster("")
                 
-
+plot()
+                
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb3_cropped <- crop(alb20170124, ext)
 plot(alb3_cropped <- crop(alb20170124, ext))
                 
 # crop jul
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
                 
 
 
