@@ -187,7 +187,7 @@ plot(veg4b_cropped, main="summer_2018")
 plot(veg5b_cropped, main="summer_2019")
 plot(veg6b_cropped, main="summer_2020")                
  
-# first half   
+# veg first half   
 par(mfrow=c(3,2))
 plot(veg1_cropped, main="winter_2015")
 plot(veg1b_cropped, main="summer_2015")
@@ -196,7 +196,7 @@ plot(veg2b_cropped, main="summer_2016")
 plot(veg3_cropped, main="winter_2017")
 plot(veg3b_cropped, main="summer_2017")
                 
-# second half                              
+# veg second half                              
 par(mfrow=c(3,2))              
 plot(veg4_cropped, main="winter_2018")
 plot(veg4b_cropped, main="summer_2018")
@@ -368,7 +368,7 @@ plot(alb5b_cropped, main="summer_2019")
 plot(alb6b_cropped, main="summer_2020")                
 
 
-# first half
+# alb first half
 par(mfrow=c(3,2))
 plot(alb1_cropped, main="winter_2015")
 plot(alb1b_cropped, main="summer_2015")
@@ -378,7 +378,7 @@ plot(alb3_cropped, main="winter_2017")
 plot(alb3b_cropped, main="summer_2017")
                
                 
-# second half
+# alb second half
 par(mfrow=c(3,2))
 plot(alb4_cropped, main="winter_2018")
 plot(alb4b_cropped, main="summer_2018")
@@ -386,6 +386,92 @@ plot(alb5_cropped, main="winter_2019")
 plot(alb5b_cropped, main="summer_2019")
 plot(alb6_cropped, main="winter_2020")
 plot(alb6b_cropped, main="summer_2020")                
+
+
+
+
+### veg + alb
+# winter
+par(mfrow=c(3,2))
+plot(veg1_cropped, main="vegetation_winter_2015")
+plot(alb1_cropped, main="albedo_winter_2015")
+plot(veg2_cropped, main="vegetation_winter_2016")
+plot(alb2_cropped, main="albedo_winter_2016")
+plot(veg3_cropped, main="vegetation_winter_2017")
+plot(alb3_cropped, main="albedo_winter_2017")
+
+par(mfrow=c(3,2))
+plot(veg4_cropped, main="vegetation_winter_2018")
+plot(alb4_cropped, main="albedo_winter_2018")
+plot(veg5_cropped, main="vegetation_winter_2019")
+plot(alb5_cropped, main="albedo_winter_2019")
+plot(veg6_cropped, main="vegetation_winter_2020")
+plot(alb6_cropped, main="albedo_winter_2020")
+
+# summer
+par(mfrow=c(3,2))
+plot(veg1b_cropped, main="vegetation_summer_2015")
+plot(alb1b_cropped, main="albedo_summer_2015")
+plot(veg2b_cropped, main="vegetation_summer_2016")
+plot(alb2b_cropped, main="albedo_summer_2016")
+plot(veg3b_cropped, main="vegetation_summer_2017")
+plot(alb3b_cropped, main="albedo_summer_2017")
+
+par(mfrow=c(3,2))
+plot(veg4b_cropped, main="vegetation_summer_2018")
+plot(alb4b_cropped, main="albedo_summer_2018")
+plot(veg5b_cropped, main="vegetation_summer_2019")
+plot(alb5b_cropped, main="albedo_summer_2019")
+plot(veg6b_cropped, main="vegetation_summer_2020")
+plot(alb6b_cropped, main="albedo_summer_2020")                
+
+
+# all 
+par(mfrow=c(2,2))
+plot(alb1_cropped, main="albedo_winter_2015")
+plot(veg1_cropped, main="vegetation_winter_2015")
+plot(alb1b_cropped, main="albedo_summer_2015")
+plot(veg1b_cropped, main="vegetation_summer_2015")
+
+par(mfrow=c(2,2))
+plot(alb2_cropped, main="albedo_winter_2016")
+plot(veg2_cropped, main="vegetation_winter_2016")
+plot(alb2b_cropped, main="albedo_summer_2016")
+plot(veg2b_cropped, main="vegetation_summer_2016")
+
+par(mfrow=c(2,2))
+plot(alb3_cropped, main="albedo_winter_2017")
+plot(veg3_cropped, main="vegetation_winter_2017")
+plot(alb3b_cropped, main="albedo_summer_2017")
+plot(veg3b_cropped, main="vegetation_summer_2017")
+
+par(mfrow=c(2,2))
+plot(alb4_cropped, main="albedo_winter_2018")
+plot(veg4_cropped, main="vegetation_winter_2018")
+plot(alb4b_cropped, main="albedo_summer_2018")
+plot(veg4b_cropped, main="vegetation_summer_2018")
+
+par(mfrow=c(2,2))
+plot(alb5_cropped, main="albedo_winter_2019")
+plot(veg5_cropped, main="vegetation_winter_2019")
+plot(alb5b_cropped, main="albedo_summer_2019")
+plot(veg5b_cropped, main="vegetation_summer_2019")
+
+par(mfrow=c(2,2))
+plot(alb6_cropped, main="albedo_winter_2020")
+plot(veg6_cropped, main="vegetation_winter_2020")
+plot(alb6b_cropped, main="albedo_summer_2020")          
+plot(veg6b_cropped, main="vegetation_summer_2020")
+
+
+
+
+
+
+
+
+
+
 
 
 
