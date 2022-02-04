@@ -399,6 +399,3 @@ plot(alb6b_cropped, main="summer_2020")
 
 
 
-
-
-
