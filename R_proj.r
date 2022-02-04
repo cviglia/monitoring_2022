@@ -28,7 +28,7 @@
 
 library(raster)
 
-setwd("C:/lab//copernicus/") 
+setwd("C:/lab//my/") 
 
 # create raster objects from files, import files
 # crop: coordinates of Sicily (longitude (W-E) 11.9256 - 15.6528; latitude (S-N) 35.4929 - 38.8122)
@@ -460,7 +460,7 @@ plot(alb6b_cropped, main="albedo_summer_2020")
 plot(alb1_cropped, main="albedo_winter_2015")
 plot(veg1_cropped, main="vegetation_winter_2015")
 plot(alb1b_cropped, main="albedo_summer_2015")
-plot(veg1b_cropped, main="vegetation_summer_2015"))
+plot(veg1b_cropped, main="vegetation_summer_2015")
 
 par(mfrow=c(2,2))
 plot(alb2_cropped, main="albedo_winter_2016")
