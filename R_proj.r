@@ -30,8 +30,8 @@ library(raster)
 
 setwd("C:/lab//copernicus/") 
 
-# create raster objects from files
-# crop the files
+# create raster objects from files, import files
+# crop: coordinates of Sicily (longitude (W-E) 11.9256 - 15.6528; latitude (S-N) 35.4929 - 38.8122)
 
 ######### 2020 veg
 # raster jen
@@ -47,11 +47,13 @@ veg20200701
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg6_cropped <- crop(veg20200101, ext)
+veg6_cropped
 # plot(veg6_cropped)
 
 # crop jul
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg6b_cropped <- crop(veg20200701, ext)
+veg6b_cropped
 # plot(veg6b_cropped)
 
 ######### 2020 alb
@@ -68,11 +70,13 @@ alb20200613
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb6_cropped <- crop(alb20200124, ext)
+alb6_cropped
 # plot(alb6_cropped)
 
 # crop jun
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb6b_cropped <- crop(alb20200613, ext)
+alb6b_cropped
 # plot(alb6b_cropped)
 
 
@@ -90,11 +94,13 @@ veg20190701
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg5_cropped <- crop(veg20190101, ext)
+veg5_cropped
 # plot(veg5_cropped)
 
 # crop jul
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg5b_cropped <- crop(veg20190701, ext)
+veg5b_cropped
 # plot(veg5b_cropped)
 
 ######### 2019 alb
@@ -111,11 +117,13 @@ alb20190623
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb5_cropped <- crop(alb20190124, ext)
+alb5_cropped
 # plot(alb5_cropped)
 
 # crop jun
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb5b_cropped <- crop(alb20190623, ext)
+alb5b_cropped
 # plot(alb5b_cropped)
                 
 
@@ -133,11 +141,13 @@ veg20180701
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg4_cropped <- crop(veg20180101, ext)
+veg4_cropped
 # plot(veg4_cropped)
 
 # crop jul
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg4b_cropped <- crop(veg20180701, ext)
+veg4b_cropped
 # plot(veg4b_cropped)
 
 ######### 2018 alb
@@ -154,11 +164,13 @@ alb20180623
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb4_cropped <- crop(alb20180124, ext)
+alb4_cropped
 # plot(alb4_cropped)
 
 # crop jun
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb4b_cropped <- crop(alb20180623, ext)  
+alb4b_cropped
 # plot(alb4b_cropped)               
 
 
@@ -176,11 +188,13 @@ veg20170701
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg3_cropped <- crop(veg20170101, ext)
+veg3_cropped
 # plot(veg3_cropped)
 
 # crop jul
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg3b_cropped <- crop(veg20170701, ext)
+veg3b_cropped
 # plot(veg3b_cropped)
 
 ######### 2017 alb
@@ -197,11 +211,13 @@ alb20170623
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb3_cropped <- crop(alb20170124, ext)
+alb3_cropped
 # plot(alb3_cropped)
                 
 # crop jun
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb3b_cropped <- crop(alb20170623, ext)
+alb3b_cropped
 # plot(alb3b_cropped)               
 
 
@@ -219,11 +235,13 @@ veg20160701
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg2_cropped <- crop(veg20160101, ext)
+veg2_cropped
 # plot(veg2_cropped)
 
 # crop jul
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg2b_cropped <- crop(veg20160701, ext)
+veg2b_cropped
 # plot(veg2b_cropped)
 
 ######### 2016 alb
@@ -240,11 +258,13 @@ alb20160623
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb2_cropped <- crop(alb20160124, ext)
+alb2_cropped
 # plot(alb2_cropped)
 
 # crop jun
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb2b_cropped <- crop(alb20160623, ext)
+alb2b_cropped
 # plot(alb2b_cropped)
                 
 
@@ -262,11 +282,13 @@ veg20150701
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg1_cropped <- crop(veg20150101, ext)
+veg1_cropped
 # plot(veg1_cropped)
 
 # crop jul
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 veg1b_cropped <- crop(veg20150701, ext)
+veg1b_cropped
 # plot(veg1b_cropped)
 
 ######### 2015 alb
@@ -283,11 +305,13 @@ alb20150623
 # crop jen
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb1_cropped <- crop(alb20150124, ext)
+alb1_cropped
 # plot(alb1_cropped)
                
 # crop jun
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 alb1b_cropped <- crop(alb20150623, ext)           
+alb1b_cropped
 # plot(alb1b_cropped)
 
 
@@ -304,7 +328,7 @@ albwin <- stack(alb1_cropped, alb2_cropped, alb3_cropped, alb4_cropped, alb5_cro
 plot(albwin)
                 
 albsum <- stack(alb1b_cropped, alb2b_cropped, alb3b_cropped, alb4b_cropped, alb5b_cropped, alb6b_cropped)              
-albsum
+plot(albsum)
         
 
 
@@ -428,9 +452,10 @@ plot(alb6b_cropped, main="albedo_summer_2020")
 
 
 # all 
-# pdf altogether # pdf() # dev.off()
-# jpeg singles multi-paneled plottings  # jpeg() # dev.off()
+# create a pdf with everything # pdf() # dev.off()
+# create single images: jpeg singles multi-paneled plottings  # jpeg() # dev.off()
 
+# pdf()
 (par(mfrow=c(2,2))
 plot(alb1_cropped, main="albedo_winter_2015")
 plot(veg1_cropped, main="vegetation_winter_2015")
@@ -467,17 +492,7 @@ plot(alb6_cropped, main="albedo_winter_2020")
 plot(veg6_cropped, main="vegetation_winter_2020")
 plot(alb6b_cropped, main="albedo_summer_2020")          
 plot(veg6b_cropped, main="vegetation_summer_2020")
-
-
-
-
-
-
-
-
-
-
-
+#dev.off()
 
 
 
