@@ -492,7 +492,7 @@ plot(alb6_cropped, main="albedo_winter_2020")
 plot(veg6_cropped, main="vegetation_winter_2020")
 plot(alb6b_cropped, main="albedo_summer_2020")          
 plot(veg6b_cropped, main="vegetation_summer_2020")
-#dev.off()
+# dev.off()
 
 
 
