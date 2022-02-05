@@ -25,13 +25,18 @@
 # Thus albedo varies in space and time as a result of both natural processes (e.g. changes in solar position, inundation and vegetation growth) 
 # and human activities (e.g. clearing and planting forests, sowing and harvesting crops, burning rangeland). It is a sensitive indicator of environmental vulnerability. 
 
+# bosco ficuzza long lat (13.388772016306604, 37.88704724289775)
+# parco dell'etna long lat (14.991018843852746, 37.74844445403232)
+# parco delle madonie long lat (14.01827226437038, 37.87426898539654)
+# riserva cavagrande long lat (15.096977198221772, 36.97687818588366)
+
 # Require libraries
 pacman::p_load(sp, rgdal, raster, rgeos, rasterVis, 
                RStoolbox, dplyr, writexl, ggplot2)
 
 setwd("C:/lab//my/") 
 
-# create raster objects from files, import files
+# create raster objects from files, import the rasters
 # crop: coordinates of Sicily (longitude (W-E) 11.9256 - 15.6528; latitude (S-N) 35.4929 - 38.8122)
 
 ######### 2020 veg
@@ -497,42 +502,28 @@ plot(veg6b_cropped, main="vegetation_summer_2020")
 
 
 
-# plot stacks, select point and automatically extract values
-plot(vegwin[[1]])  # One exemplary layer for orientation
-values_1 <- click(vegwin, n=1) 
-# values_1 north-west 
-# 2015/0.584, 2016/0.656, 2017/0.672, 2018/0.928, 2019/0.548, 2020/0.608
+# import spatialpoints
+cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
+coordinates(cluster) <- ~Longitude+Latitude
+crs_wgs84 <- CRS(SRS_string = "EPSG:4326")
+slot(cluster, "proj4string") <- crs_wgs84
+plot(cluster)
 
-plot(vegwin[[1]])
-values_2 <- click(vegwin, n=1)
-# values_2 centre
-# 2015/0.168, 2016/0.460, 2017/0.332, 2018/ 0.928, 2019/0.488, 2020/0.420
+# Plot Albedo and NDVI, add points
+par(mfrow=c(1,2))
 
-plot(vegwin[[1]])
-values_3 <- click(vegwin, n=1)
-# values_3 south-east
-# 2015/0.568, 2016/0.640, 2017/0.608, 2018/ 0.656, 2019/0.684, 2020/0.624
+plot(alb1_cropped)
+plot(cluster, add = TRUE)
 
-plot(vegwin[[1]])
-values_4 <- click(vegwin, n=1)
-# values_4 north-east
-# 2015/0.184, 2016/0.544, 2017/0.928, 2018/0.928, 2019/0.928, 2020/0.928
+plot(veg1_cropped)
+plot(cluster, add = TRUE)
 
 
-# compose and plot dataframe
-timeseries_winveg <- data.frame(year = c(2015, 2016, 2017, 2018, 2019, 2020),
-                         values = values_1)
-
-plot(timeseries_winveg, type="l")
-
-
-# bosco ficuzza long lat (13.388772016306604, 37.88704724289775)
-# parco dell'etna long lat (14.991018843852746, 37.74844445403232)
-# parco delle madonie long lat (14.01827226437038, 37.87426898539654)
-# riserva cavagrande long lat (15.096977198221772, 36.97687818588366)
-
-
-
+# extract raster values
+alb1_cropped_values <- extract(alb1_cropped, cluster, 
+                          method = "simple", df = TRUE)
+veg1_cropped_values <- extract(veg1_cropped, cluster, 
+                          method = "simple", df = TRUE)
 
 
 
