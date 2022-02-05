@@ -141,3 +141,27 @@ grid.arrange(
 p8 <- ggplot()+ geom_raster(l2021_cropped, mapping = aes(x = x, y = y, fill = )) + scale_fill_viridis(option = "cividis") +  ggtitle("2021")
 p7 <- ggplot()+ geom_raster(l2020_cropped, mapping = aes(x = x, y = y, fill = )) + scale_fill_viridis(option = "cividis") +  ggtitle("2020")
 
+
+
+# plot stacks, select point and automatically extract values
+plot(vegwin[[1]])  # One exemplary layer for orientation
+values_1 <- click(vegwin, n=1) 
+# values_1 north-west 
+# 2015/0.584, 2016/0.656, 2017/0.672, 2018/0.928, 2019/0.548, 2020/0.608
+
+plot(vegwin[[1]])
+values_2 <- click(vegwin, n=1)
+# values_2 centre
+# 2015/0.168, 2016/0.460, 2017/0.332, 2018/ 0.928, 2019/0.488, 2020/0.420
+
+plot(vegwin[[1]])
+values_3 <- click(vegwin, n=1)
+# values_3 south-east
+# 2015/0.568, 2016/0.640, 2017/0.608, 2018/ 0.656, 2019/0.684, 2020/0.624
+
+plot(vegwin[[1]])
+values_4 <- click(vegwin, n=1)
+# values_4 north-east
+# 2015/0.184, 2016/0.544, 2017/0.928, 2018/0.928, 2019/0.928, 2020/0.928
+
+
