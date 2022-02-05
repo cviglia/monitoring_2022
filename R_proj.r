@@ -456,7 +456,7 @@ plot(alb6b_cropped, main="albedo_summer_2020")
 # create single images: jpeg singles multi-paneled plottings  # jpeg() # dev.off()
 
 # pdf()
-(par(mfrow=c(2,2))
+par(mfrow=c(2,2))
 plot(alb1_cropped, main="albedo_winter_2015")
 plot(veg1_cropped, main="vegetation_winter_2015")
 plot(alb1b_cropped, main="albedo_summer_2015")
