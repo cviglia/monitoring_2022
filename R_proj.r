@@ -501,6 +501,12 @@ plot(veg6b_cropped, main="vegetation_summer_2020")
 # dev.off()
 
 
+# compose and plot dataframe
+timeseries_winveg <- data.frame(year = c(2015, 2016, 2017, 2018, 2019, 2020),
+                         values = values_1)
+
+plot(timeseries_winveg, type="l")
+
 
 # import spatialpoints
 cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
