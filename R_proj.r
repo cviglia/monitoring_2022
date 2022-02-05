@@ -494,16 +494,40 @@ plot(alb6b_cropped, main="albedo_summer_2020")
 plot(veg6b_cropped, main="vegetation_summer_2020")
 # dev.off()
 
-# plot stacks, select point and automaticly extract values
+
+
+# plot stacks, select point and automatically extract values
 plot(vegwin[[1]])  # One exemplary layer for orientation
-values <- click(vegwin, n=1)
-values
+values_1 <- click(vegwin, n=1) 
+# values_1 north-west 
+# 2015/0.584, 2016/0.656, 2017/0.672, 2018/0.928, 2019/0.548, 2020/0.608
+
+plot(vegwin[[1]])
+values_2 <- click(vegwin, n=1)
+# values_2 centre
+# 2015/0.168, 2016/0.460, 2017/0.332, 2018/ 0.928, 2019/0.488, 2020/0.420
+
+plot(vegwin[[1]])
+values_3 <- click(vegwin, n=1)
+# values_3 south-east
+# 2015/0.568, 2016/0.640, 2017/0.608, 2018/ 0.656, 2019/0.684, 2020/0.624
+
+plot(vegwin[[1]])
+values_4 <- click(vegwin, n=1)
+# values_4 north-east
+# 2015/0.184, 2016/0.544, 2017/0.928, 2018/0.928, 2019/0.928, 2020/0.928
 
 
 # compose and plot dataframe
-timeseries <- data.frame(year = c(2000, 2005, 2010, 2015),
-                         values = values[1, ])
-plot(timeseries, type="l")
+timeseries_winveg <- data.frame(year = c(2015, 2016, 2017, 2018, 2019, 2020),
+                         values = values_1)
+
+plot(timeseries_winveg, type="l")
+
+
+
+
+
 
 
 
