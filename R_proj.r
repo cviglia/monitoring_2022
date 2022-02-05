@@ -25,8 +25,9 @@
 # Thus albedo varies in space and time as a result of both natural processes (e.g. changes in solar position, inundation and vegetation growth) 
 # and human activities (e.g. clearing and planting forests, sowing and harvesting crops, burning rangeland). It is a sensitive indicator of environmental vulnerability. 
 
-
-library(raster)
+# Require libraries
+pacman::p_load(sp, rgdal, raster, rgeos, rasterVis, 
+               RStoolbox, dplyr, writexl, ggplot2)
 
 setwd("C:/lab//my/") 
 
@@ -525,10 +526,10 @@ timeseries_winveg <- data.frame(year = c(2015, 2016, 2017, 2018, 2019, 2020),
 plot(timeseries_winveg, type="l")
 
 
-# bosco ficuzza long lat 13.388772016306604, 37.88704724289775
-# parco dell'etna long lat 14.991018843852746, 37.74844445403232
-# parco delle madonie long lat 14.01827226437038, 37.87426898539654
-# riserva cavagrande long lat 15.096977198221772, 36.97687818588366
+# bosco ficuzza long lat (13.388772016306604, 37.88704724289775)
+# parco dell'etna long lat (14.991018843852746, 37.74844445403232)
+# parco delle madonie long lat (14.01827226437038, 37.87426898539654)
+# riserva cavagrande long lat (15.096977198221772, 36.97687818588366)
 
 
 
