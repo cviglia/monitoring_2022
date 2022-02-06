@@ -25,19 +25,19 @@
 # Thus albedo varies in space and time as a result of both natural processes (e.g. changes in solar position, inundation and vegetation growth) 
 # and human activities (e.g. clearing and planting forests, sowing and harvesting crops, burning rangeland). It is a sensitive indicator of environmental vulnerability. 
 
-# bosco ficuzza long lat (13.388772016306604, 37.88704724289775)
-# parco dell'etna long lat (14.991018843852746, 37.74844445403232)
-# parco delle madonie long lat (14.01827226437038, 37.87426898539654)
-# riserva cavagrande long lat (15.096977198221772, 36.97687818588366)
+# bosco ficuzza long lat (13.40100, 37.91054)
+# parco dell'etna long lat (14.9910188438527,37.7484444540323)
+# parco delle madonie long lat (14.02685,37.86626)
+# riserva cavagrande long lat (15.0969771982218,36.9768781858837)
 
-# Require libraries
+# libraries
 pacman::p_load(sp, rgdal, raster, rgeos, rasterVis, 
                RStoolbox, dplyr, writexl, ggplot2)
 
 setwd("C:/lab//my/") 
 
 # create raster objects from files, import the rasters
-# crop: coordinates of Sicily (longitude (W-E) 11.9256 - 15.6528; latitude (S-N) 35.4929 - 38.8122)
+# crop: coordinates of Sicily (longitude 11.9256 - 15.6528; latitude 35.4929 - 38.8122)
 
 ######### 2020 veg
 # raster jen
@@ -501,13 +501,6 @@ plot(veg6b_cropped, main="vegetation_summer_2020")
 # dev.off()
 
 
-# compose and plot dataframe
-timeseries_winveg <- data.frame(year = c(2015, 2016, 2017, 2018, 2019, 2020),
-                         values = values_1)
-
-plot(timeseries_winveg, type="l")
-
-
 # import spatialpoints
 cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
 coordinates(cluster) <- ~Longitude+Latitude
@@ -515,12 +508,10 @@ crs_wgs84 <- CRS(SRS_string = "EPSG:4326")
 slot(cluster, "proj4string") <- crs_wgs84
 plot(cluster)
 
-# Plot Albedo and NDVI, add points
+# plot Albedo and NDVI, add points
 par(mfrow=c(1,2))
-
 plot(alb1_cropped)
 plot(cluster, add = TRUE)
-
 plot(veg1_cropped)
 plot(cluster, add = TRUE)
 
@@ -533,7 +524,12 @@ veg1_cropped_values <- extract(veg1_cropped, cluster,
 
 
 
+# compose and plot dataframe
+timeseries_veg1 <- data.frame(year = c(2015, 2016, 2017, 2018, 2019, 2020),
+                         values = veg1_cropped_values)
 
+
+plot(timeseries, type="l")
 
 
 
