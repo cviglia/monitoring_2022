@@ -565,15 +565,27 @@ albvalue2 <- 0.1055 # albedo bosco ficuzza jen 2016
 albvalue3 <- 0.1029 # albedo bosco ficuzza jen 2017
 albvalue4 <- 0.1169 # albedo bosco ficuzza jen 2018
 albvalue5 <- 0.1210 # albedo bosco ficuzza jen 2019
-albvalue6 <- 0.1208  # albedo bosco ficuzza jen 2020
+albvalue6 <- 0.1208 # albedo bosco ficuzza jen 2020
 
 ALDH_win <- c(0.1196, 0.1055, 0.1029, 0.1169, 0.1210, 0.1208)
 plot(ALDH_win, type = "o", col = "red")
 title(main = "Albedo of Bosco Ficuzza in winter", col.main="black", font.main=4)
 
+NDVI_win <- c(0.59600002, 0.93200004, 0.9280000, 0.9280000, 0.9280000, 0.65200001)
+ALDH_win <- c(0.1196, 0.1055, 0.1029, 0.1169, 0.1210, 0.1208)
+plot(NDVI_win, type = "o", col = "green", ylim = c(0,1))
+lines(ALDH_win, type = "o", pch = 22, lty = 2, col = "red")
 
 
+#
+box()
+lines(ALDH_win, type = "o", pch = 22, lty = 2, col = "red")
 
+title(xlab="Years")
+title(ylab="Indices")
 
+legend(1, g_range[2], c("cars","trucks"), cex=0.8, 
+   col=c("blue","red"), pch=21:22, lty=1:2);
 
+# https://sites.harding.edu/fmccown/r/
 
