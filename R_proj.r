@@ -522,14 +522,54 @@ alb1_cropped_values <- extract(alb1_cropped, cluster,
 veg1_cropped_values <- extract(veg1_cropped, cluster, 
                           method = "simple", df = TRUE)
 
+alb2_cropped_values <- extract(alb2_cropped, cluster, 
+                          method = "simple", df = TRUE)
+veg2_cropped_values <- extract(veg2_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+alb3_cropped_values <- extract(alb3_cropped, cluster,
+                               method = "simple", df = TRUE)
+veg3_cropped_values <- extract(veg3_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+alb4_cropped_values <- extract(alb4_cropped, cluster,
+                               method = "simple", df = TRUE)
+veg4_cropped_values <- extract(veg4_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+alb5_cropped_values <- extract(alb5_cropped, cluster,
+                               method = "simple", df = TRUE)
+veg5_cropped_values <- extract(veg5_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+alb6_cropped_values <- extract(alb6_cropped, cluster,
+                               method = "simple", df = TRUE)
+veg6_cropped_values <- extract(veg6_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+# give names to the values of bosco ficuzza (the first observations of the raster values)
+vegvalue1 <- 0.59600002 # vegetation index bosco ficuzza jen 2015
+vegvalue2 <- 0.93200004 # vegetation index bosco ficuzza jen 2016
+vegvalue3 <- 0.9280000  # vegetation index bosco ficuzza jen 2017
+vegvalue4 <- 0.9280000  # vegetation index bosco ficuzza jen 2018
+vegvalue5 <- 0.9280000  # vegetation index bosco ficuzza jen 2019
+vegvalue6 <- 0.65200001 # vegetation index bosco ficuzza jen 2020
+
+NDVI_win <- c(0.59600002, 0.93200004, 0.9280000, 0.9280000, 0.9280000, 0.65200001)
+plot(NDVI_win, type = "o", col = "green")
+title(main = "Vegetation of Bosco Ficuzza in winter", col.main="black", font.main=4)
 
 
-# compose and plot dataframe
-timeseries_veg1 <- data.frame(year = c(2015, 2016, 2017, 2018, 2019, 2020),
-                         values = veg1_cropped_values)
+albvalue1 <- 0.1196 # albedo bosco ficuzza jen 2015
+albvalue2 <- 0.1055 # albedo bosco ficuzza jen 2016
+albvalue3 <- 
+albvalue4 <- 0.1169  # albedo bosco ficuzza jen 2018
+albvalue5 <-
+albvalue6 <- 0.1208  # albedo bosco ficuzza jen 2020
 
 
-plot(timeseries, type="l")
+
+
 
 
 
