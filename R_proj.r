@@ -562,12 +562,14 @@ title(main = "Vegetation of Bosco Ficuzza in winter", col.main="black", font.mai
 
 albvalue1 <- 0.1196 # albedo bosco ficuzza jen 2015
 albvalue2 <- 0.1055 # albedo bosco ficuzza jen 2016
-albvalue3 <- 
-albvalue4 <- 0.1169  # albedo bosco ficuzza jen 2018
-albvalue5 <-
+albvalue3 <- 0.1029 # albedo bosco ficuzza jen 2017
+albvalue4 <- 0.1169 # albedo bosco ficuzza jen 2018
+albvalue5 <- 0.1210 # albedo bosco ficuzza jen 2019
 albvalue6 <- 0.1208  # albedo bosco ficuzza jen 2020
 
-
+ALDH_win <- c(0.1196, 0.1055, 0.1029, 0.1169, 0.1210, 0.1208)
+plot(ALDH_win, type = "o", col = "red")
+title(main = "Albedo of Bosco Ficuzza in winter", col.main="black", font.main=4)
 
 
 
