@@ -173,3 +173,5 @@ ID <-
 # data.frame
 NDVI_index <- data.frame(ID, Normalized.Difference.Vegetation.Index.333M)
 
+# basic scatter plot with ggplot
+ggplot(, aes(x=NDVI, y=ALDH)) + geom_point()
