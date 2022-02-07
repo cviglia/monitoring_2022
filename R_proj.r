@@ -3,7 +3,7 @@
 # The Normalized Difference Vegetation Index (NDVI) is an indicator of the greenness of the biomes, a proxy to quantify the vegetation amount.
 
 # Even though it is not a physical property of the vegetation cover, it has a very simple formulation NDVI = (REF_nir – REF_red)/(REF_nir + REF_red) 
-# where REF_nir and REF_red are the spectral reflectances measured in the near infrared and red wavebands respectively, thqt makes it widely used for ecosystems monitoring.
+# where REF_nir and REF_red are the spectral reflectances measured in the near infrared and red wavebands respectively, that makes it widely used for ecosystems monitoring.
 
 # The NDVI is widely used by the bio-geophysical community to monitor the vegetation state and disturbances to address a large range of applications, 
 # including forestry, agriculture, food security, water management.
@@ -516,6 +516,7 @@ plot(veg1_cropped)
 plot(cluster, add = TRUE)
 
 
+# graph
 # extract raster values of winter
 alb1_cropped_values <- extract(alb1_cropped, cluster, 
                           method = "simple", df = TRUE)
@@ -690,6 +691,38 @@ title(ylab="Values")
 # create a legend at (1, g_range[2]) that is slightly smaller (cex) 
 legend("left", g_range[2], c("Vegetation","Albedo"), cex=0.9, 
    col=c("dark green","dark red"), pch=21:22, lty=1:2)
+
+
+
+# scatterplot winter
+x <- NDVI_win
+y <- ALDH_win
+
+# plot with main and axis titles
+plot(x, y, main = "Correlation",
+     xlab = "Vegetation", ylab = "Albedo",
+     pch = 19, col = "brown")
+# no correlation
+
+
+# scatterplot summer
+x <- NDVI_sum
+y <- ALDH_sum
+
+# plot with main and axis titles
+plot(x, y, main = "Correlation",
+     xlab = "Vegetation", ylab = "Albedo",
+     pch = 19, col = "dark orange")
+# no correlation
+
+
+
+
+
+
+
+
+
 
 
 
