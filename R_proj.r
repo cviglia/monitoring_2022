@@ -1,15 +1,16 @@
-# my project
+# my project 
+
+# The Leaf Area Index is defined as half the total area of green elements of the canopy per unit horizontal ground area. 
+
+# The satellite-derived value corresponds to the total green LAI of all the canopy layers, including the understory which may represent a very significant contribution, 
+# particularly for forests. Practically, the LAI quantifies the thickness of the vegetation cover.
+
+# LAI is recognized as an Essential Climate Variable (ECV) by the Global Climate Observing System (GCOS).
 
 # The Normalized Difference Vegetation Index (NDVI) is an indicator of the greenness of the biomes, a proxy to quantify the vegetation amount.
 
 # Even though it is not a physical property of the vegetation cover, it has a very simple formulation NDVI = (REF_nir – REF_red)/(REF_nir + REF_red) 
 # where REF_nir and REF_red are the spectral reflectances measured in the near infrared and red wavebands respectively, that makes it widely used for ecosystems monitoring.
-
-# The NDVI is widely used by the bio-geophysical community to monitor the vegetation state and disturbances to address a large range of applications, 
-# including forestry, agriculture, food security, water management.
-
-# Very low values of NDVI (0.1 and below) correspond to barren areas of rock, sand, or snow. Moderate values represent shrub and grassland (0.2 to 0.3), 
-# while high values indicate temperate and tropical rainforests (0.6 to 0.8).
 
 # The surface albedo quantifies the fraction of the sunlight reflected by the surface of the Earth. Different albedo concepts are defined
 # and we will focus on the directional albedo or directional-hemispherical reflectance. It is also called black-sky albedo and it is the integration of
@@ -25,6 +26,17 @@
 # Thus albedo varies in space and time as a result of both natural processes (e.g. changes in solar position, inundation and vegetation growth) 
 # and human activities (e.g. clearing and planting forests, sowing and harvesting crops, burning rangeland). It is a sensitive indicator of environmental vulnerability. 
 
+# Seasonal vegetation phenology can significantly alter surface albedo which in turn affects the global energy balance 
+# and the albedo warming/cooling feedbacks that impact climate change. 
+
+# The NDVI is widely used by the bio-geophysical community to monitor the vegetation state and disturbances to address a large range of applications, 
+# including forestry, agriculture, food security, water management.
+
+# Very low values of NDVI (0.1 and below) correspond to barren areas of rock, sand, or snow. Moderate values represent shrub and grassland (0.2 to 0.3), 
+# while high values indicate temperate and tropical rainforests (0.6 to 0.8).
+
+# coordinates of Sicily (longitude 11.9256 - 15.6528; latitude 35.4929 - 38.8122)
+
 # bosco ficuzza long lat (13.40100, 37.91054)
 # parco dell'etna long lat (14.9910188438527,37.7484444540323)
 # parco delle madonie long lat (14.02685,37.86626)
@@ -36,8 +48,31 @@ pacman::p_load(sp, rgdal, raster, rgeos, rasterVis,
 
 setwd("C:/lab//my/") 
 
+# create a list with the images
+rlistndvi <- list.files(pattern = "NDVI")
+# import single layers images
+importndvi <- lapply(rlistndvi, raster) 
+# put all the images together
+stackndvi <- stack(importndvi) 
+# crop the stack
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+ndvi_cropped <- crop(stackndvi, ext)
+
+
+# create a list with the images
+rlistaldh <- list.files(pattern = "ALDH")
+# import single layers images
+importaldh <- lapply(rlistaldh, raster) 
+# put all the images together
+stackaldh <- stack(importaldh)
+# crop the stack
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+aldh_cropped <- crop(stackaldh, ext)
+
+
+
 # create raster objects from files, import the rasters
-# crop: coordinates of Sicily (longitude 11.9256 - 15.6528; latitude 35.4929 - 38.8122)
+# crop: coordinates of Sicily
 
 ######### 2020 veg
 # raster jen
@@ -716,6 +751,10 @@ plot(x, y, main = "Correlation",
 # no correlation
 
 
+
+rlist<-list.files(pattern = "LAI") # create a list with the images
+import <-lapply(rlist, raster) # import single layers images
+laistack<-stack(import) # put all the images together
 
 
 
