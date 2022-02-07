@@ -324,17 +324,17 @@ alb1b_cropped
 
 # create stacks to concatenates multiple vectors into a single vector 
 vegwin <- stack(veg1_cropped, veg2_cropped, veg3_cropped, veg4_cropped, veg5_cropped, veg6_cropped)
-plot(vegwin)
+# plot(vegwin)
 
 vegsum <- stack(veg1b_cropped, veg2b_cropped, veg3b_cropped, veg4b_cropped, veg5b_cropped, veg6b_cropped)
-plot(vegsum)
+# plot(vegsum)
               
 
 albwin <- stack(alb1_cropped, alb2_cropped, alb3_cropped, alb4_cropped, alb5_cropped, alb6_cropped)
-plot(albwin)
+# plot(albwin)
                 
 albsum <- stack(alb1b_cropped, alb2b_cropped, alb3b_cropped, alb4b_cropped, alb5b_cropped, alb6b_cropped)              
-plot(albsum)
+# plot(albsum)
         
 
 
@@ -556,7 +556,7 @@ vegvalue5 <- 0.9280000  # vegetation index bosco ficuzza jen 2019
 vegvalue6 <- 0.65200001 # vegetation index bosco ficuzza jen 2020
 
 NDVI_win <- c(0.59600002, 0.93200004, 0.9280000, 0.9280000, 0.9280000, 0.65200001)
-plot(NDVI_win, type = "o", col = "green")
+plot(NDVI_win, type = "o", col = "dark green")
 title(main = "Vegetation of Bosco Ficuzza in winter", col.main="black", font.main=4)
 
 
@@ -568,24 +568,49 @@ albvalue5 <- 0.1210 # albedo bosco ficuzza jen 2019
 albvalue6 <- 0.1208 # albedo bosco ficuzza jen 2020
 
 ALDH_win <- c(0.1196, 0.1055, 0.1029, 0.1169, 0.1210, 0.1208)
-plot(ALDH_win, type = "o", col = "red")
+plot(ALDH_win, type = "o", col = "dark red")
 title(main = "Albedo of Bosco Ficuzza in winter", col.main="black", font.main=4)
 
+
+# Bosco Ficuzza in winter
 NDVI_win <- c(0.59600002, 0.93200004, 0.9280000, 0.9280000, 0.9280000, 0.65200001)
 ALDH_win <- c(0.1196, 0.1055, 0.1029, 0.1169, 0.1210, 0.1208)
-plot(NDVI_win, type = "o", col = "green", ylim = c(0,1))
-lines(ALDH_win, type = "o", pch = 22, lty = 2, col = "red")
 
+# Calculate range from 0 to max value of cars and trucks
+g_range <- range(0, NDVI_win, ALDH_win)
 
-#
+# Graph autos using y axis that ranges from 0 to max 
+# value in cars or trucks vector.  Turn off axes and 
+# annotations (axis labels) so we can specify them ourself
+plot(NDVI_win, type="o", col="dark green", ylim=g_range, 
+   axes=FALSE, ann=FALSE)
+
+# Make x axis using Mon-Fri labels
+axis(1, at=1:6, lab=c("2015","2016","2017","2018","2019", "2020"))
+
+# Make y axis with horizontal labels that display ticks at 
+# every 4 marks. 4*0:g_range[2] is equivalent to c(0,4,8,12).
+axis(2, las=1)
+
+# Create box around plot
 box()
-lines(ALDH_win, type = "o", pch = 22, lty = 2, col = "red")
 
-title(xlab="Years")
-title(ylab="Indices")
+# Graph trucks with red dashed line and square points
+lines(ALDH_win, type="o", pch=22, lty=2, col="dark red")
 
-legend(1, g_range[2], c("cars","trucks"), cex=0.8, 
-   col=c("blue","red"), pch=21:22, lty=1:2);
+# Create a title with a red, bold/italic font
+title(main="Bosco Ficuzza in winter", col.main="black", font.main=4)
 
-# https://sites.harding.edu/fmccown/r/
+# Label the x and y axes with dark green text
+title(xlab="Years", col.lab=rgb(0,0.5,0))
+title(ylab="Values", col.lab=rgb(0,0.5,0))
+
+# Create a legend at (1, g_range[2]) that is slightly smaller 
+# (cex) and uses the same line colors and points used by 
+# the actual plots 
+legend(1, g_range[2], c("NDVI_win","ALDH_win"), cex=0.5, 
+   col=c("dark green","dark red"), pch=21:22, lty=1:2)
+
+
+
 
