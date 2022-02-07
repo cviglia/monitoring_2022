@@ -165,3 +165,11 @@ values_4 <- click(vegwin, n=1)
 # 2015/0.184, 2016/0.544, 2017/0.928, 2018/0.928, 2019/0.928, 2020/0.928
 
 
+
+
+
+ID <-
+
+# data.frame
+NDVI_index <- data.frame(ID, Normalized.Difference.Vegetation.Index.333M)
+
