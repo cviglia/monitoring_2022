@@ -516,7 +516,7 @@ plot(veg1_cropped)
 plot(cluster, add = TRUE)
 
 
-# extract raster values
+# extract raster values of winter
 alb1_cropped_values <- extract(alb1_cropped, cluster, 
                           method = "simple", df = TRUE)
 veg1_cropped_values <- extract(veg1_cropped, cluster, 
@@ -609,7 +609,7 @@ legend("left", g_range[2], c("Vegetation","Albedo"), cex=0.9,
 
 
 
-# extract raster values
+# extract raster values of summer
 alb1b_cropped_values <- extract(alb1b_cropped, cluster, 
                           method = "simple", df = TRUE)
 veg1_cropped_values <- extract(veg1b_cropped, cluster, 
