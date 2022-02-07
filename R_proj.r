@@ -547,7 +547,7 @@ alb6_cropped_values <- extract(alb6_cropped, cluster,
 veg6_cropped_values <- extract(veg6_cropped, cluster, 
                                method = "simple", df = TRUE)
 
-# give names to the values of bosco ficuzza (the first observations of the raster values)
+# give names to the values of bosco ficuzza in winter (the first observations of the raster values)
 vegvalue1 <- 0.59600002 # vegetation index bosco ficuzza jen 2015
 vegvalue2 <- 0.93200004 # vegetation index bosco ficuzza jen 2016
 vegvalue3 <- 0.9280000  # vegetation index bosco ficuzza jen 2017
@@ -572,44 +572,128 @@ plot(ALDH_win, type = "o", col = "dark red")
 title(main = "Albedo of Bosco Ficuzza in winter", col.main="black", font.main=4)
 
 
-# Bosco Ficuzza in winter
+
+# graph Bosco Ficuzza in winter
 NDVI_win <- c(0.59600002, 0.93200004, 0.9280000, 0.9280000, 0.9280000, 0.65200001)
 ALDH_win <- c(0.1196, 0.1055, 0.1029, 0.1169, 0.1210, 0.1208)
 
-# Calculate range from 0 to max value of cars and trucks
+# calculate range from 0 to max value 
 g_range <- range(0, NDVI_win, ALDH_win)
 
-# Graph autos using y axis that ranges from 0 to max 
-# value in cars or trucks vector.  Turn off axes and 
-# annotations (axis labels) so we can specify them ourself
+# graph. Turn off axes and annotations (axis labels) 
 plot(NDVI_win, type="o", col="dark green", ylim=g_range, 
    axes=FALSE, ann=FALSE)
 
-# Make x axis using Mon-Fri labels
+# make x axis using labels
 axis(1, at=1:6, lab=c("2015","2016","2017","2018","2019", "2020"))
 
-# Make y axis with horizontal labels that display ticks at 
-# every 4 marks. 4*0:g_range[2] is equivalent to c(0,4,8,12).
+# make y axis with horizontal labels 
 axis(2, las=1)
 
-# Create box around plot
+# create box around plot
 box()
 
-# Graph trucks with red dashed line and square points
+# graph albedo with red dashed line and square points
 lines(ALDH_win, type="o", pch=22, lty=2, col="dark red")
 
-# Create a title with a red, bold/italic font
+# create a title 
 title(main="Bosco Ficuzza in winter", col.main="black", font.main=4)
 
-# Label the x and y axes with dark green text
-title(xlab="Years", col.lab=rgb(0,0.5,0))
-title(ylab="Values", col.lab=rgb(0,0.5,0))
+# label the x and y axes 
+title(xlab="Years")
+title(ylab="Values")
 
-# Create a legend at (1, g_range[2]) that is slightly smaller 
-# (cex) and uses the same line colors and points used by 
-# the actual plots 
-legend(1, g_range[2], c("NDVI_win","ALDH_win"), cex=0.5, 
+# create a legend at (1, g_range[2]) that is slightly smaller (cex) 
+legend("left", g_range[2], c("Vegetation","Albedo"), cex=0.5, 
    col=c("dark green","dark red"), pch=21:22, lty=1:2)
+
+
+
+# extract raster values
+alb1b_cropped_values <- extract(alb1b_cropped, cluster, 
+                          method = "simple", df = TRUE)
+veg1_cropped_values <- extract(veg1b_cropped, cluster, 
+                          method = "simple", df = TRUE)
+
+alb2b_cropped_values <- extract(alb2b_cropped, cluster, 
+                          method = "simple", df = TRUE)
+veg2b_cropped_values <- extract(veg2b_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+alb3b_cropped_values <- extract(alb3b_cropped, cluster,
+                               method = "simple", df = TRUE)
+veg3b_cropped_values <- extract(veg3b_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+alb4b_cropped_values <- extract(alb4b_cropped, cluster,
+                               method = "simple", df = TRUE)
+veg4b_cropped_values <- extract(veg4b_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+alb5b_cropped_values <- extract(alb5b_cropped, cluster,
+                               method = "simple", df = TRUE)
+veg5b_cropped_values <- extract(veg5b_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+alb6b_cropped_values <- extract(alb6b_cropped, cluster,
+                               method = "simple", df = TRUE)
+veg6b_cropped_values <- extract(veg6b_cropped, cluster, 
+                               method = "simple", df = TRUE)
+
+
+# give names to the values of bosco ficuzza in summer
+vegvalue1b <- 0.83600003 # vegetation index bosco ficuzza jul 2015
+vegvalue2b <- 0.78400004 # vegetation index bosco ficuzza jul 2016
+vegvalue3b <- 0.83600003 # vegetation index bosco ficuzza jul 2017
+vegvalue4b <- 0.87200004 # vegetation index bosco ficuzza jul 2018
+vegvalue5b <- 0.81600004 # vegetation index bosco ficuzza jul 2019
+vegvalue6b <- 0.84400004 # vegetation index bosco ficuzza jul 2020
+
+albvalue1b <- 0.1561 # albedo bosco ficuzza jul 2015
+albvalue2b <- 0.1535 # albedo bosco ficuzza jul 2016
+albvalue3b <- 0.1769 # albedo bosco ficuzza jul 2017
+albvalue4b <- 0.1657 # albedo bosco ficuzza jul 2018
+albvalue5b <- 0.2025 # albedo bosco ficuzza jul 2019
+albvalue6b <- 0.1740 # albedo bosco ficuzza jul 2020
+
+
+# graph Bosco Ficuzza in summer
+NDVI_sum <- c(0.83600003, 0.78400004, 0.83600003, 0.87200004, 0.81600004, 0.84400004)
+ALDH_sum <- c(0.1561, 0.1535, 0.1769, 0.1657, 0.2025, 0.1740)
+
+# calculate range from 0 to max value 
+g_range <- range(0, NDVI_sum, ALDH_sum)
+
+# graph. Turn off axes and annotations (axis labels) 
+plot(NDVI_sum, type="o", col="dark green", ylim=g_range, 
+   axes=FALSE, ann=FALSE)
+
+# make x axis using labels
+axis(1, at=1:6, lab=c("2015","2016","2017","2018","2019", "2020"))
+
+# make y axis with horizontal labels 
+axis(2, las=1)
+
+# create box around plot
+box()
+
+# graph albedo with red dashed line and square points
+lines(ALDH_sum, type="o", pch=22, lty=2, col="dark red")
+
+# title 
+title(main="Bosco Ficuzza in summer", col.main="black", font.main=4)
+
+# label the x and y axes 
+title(xlab="Years")
+title(ylab="Values")
+
+# create a legend at (1, g_range[2]) that is slightly smaller (cex) 
+legend("left", g_range[2], c("Vegetation","Albedo"), cex=0.5, 
+   col=c("dark green","dark red"), pch=21:22, lty=1:2)
+
+
+
+
 
 
 
