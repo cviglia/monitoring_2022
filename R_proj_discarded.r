@@ -1,3 +1,128 @@
+# useful but not now
+
+
+# create multi paneled plottings
+
+# winter veg
+par(mfrow=c(2,3))
+plot(veg1_cropped, main="winter_2015")
+plot(veg2_cropped, main="winter_2016")
+plot(veg3_cropped, main="winter_2017")
+plot(veg4_cropped, main="winter_2018")
+plot(veg5_cropped, main="winter_2019")
+plot(veg6_cropped, main="winter_2020")
+
+# summer veg                
+par(mfrow=c(2,3))
+plot(veg1b_cropped, main="summer_2015")
+plot(veg2b_cropped, main="summer_2016")
+plot(veg3b_cropped, main="summer_2017")
+plot(veg4b_cropped, main="summer_2018")
+plot(veg5b_cropped, main="summer_2019")
+plot(veg6b_cropped, main="summer_2020")                
+ 
+# veg first half   
+par(mfrow=c(3,2))
+plot(veg1_cropped, main="winter_2015")
+plot(veg1b_cropped, main="summer_2015")
+plot(veg2_cropped, main="winter_2016")
+plot(veg2b_cropped, main="summer_2016")
+plot(veg3_cropped, main="winter_2017")
+plot(veg3b_cropped, main="summer_2017")
+                
+# veg second half                              
+par(mfrow=c(3,2))              
+plot(veg4_cropped, main="winter_2018")
+plot(veg4b_cropped, main="summer_2018")
+plot(veg5_cropped, main="winter_2019")
+plot(veg5b_cropped, main="summer_2019")
+plot(veg6_cropped, main="winter_2020")
+plot(veg6b_cropped, main="summer_2020")                
+
+             
+
+
+# winter alb
+par(mfrow=c(2,3))
+plot(alb1_cropped, main="winter_2015")
+plot(alb2_cropped, main="winter_2016")
+plot(alb3_cropped, main="winter_2017")
+plot(alb4_cropped, main="winter_2018")
+plot(alb5_cropped, main="winter_2019")
+plot(alb6_cropped, main="winter_2020")
+
+
+# summer alb
+par(mfrow=c(2,3))
+plot(alb1b_cropped, main="summer_2015")
+plot(alb2b_cropped, main="summer_2016")
+plot(alb3b_cropped, main="summer_2017")
+plot(alb4b_cropped, main="summer_2018")
+plot(alb5b_cropped, main="summer_2019")
+plot(alb6b_cropped, main="summer_2020")                
+
+
+# alb first half
+par(mfrow=c(3,2))
+plot(alb1_cropped, main="winter_2015")
+plot(alb1b_cropped, main="summer_2015")
+plot(alb2_cropped, main="winter_2016")
+plot(alb2b_cropped, main="summer_2016")
+plot(alb3_cropped, main="winter_2017") 
+plot(alb3b_cropped, main="summer_2017")
+               
+                
+# alb second half
+par(mfrow=c(3,2))
+plot(alb4_cropped, main="winter_2018")
+plot(alb4b_cropped, main="summer_2018")
+plot(alb5_cropped, main="winter_2019")
+plot(alb5b_cropped, main="summer_2019")
+plot(alb6_cropped, main="winter_2020")
+plot(alb6b_cropped, main="summer_2020")                
+
+
+
+
+### veg + alb
+# winter
+par(mfrow=c(3,2))
+plot(veg1_cropped, main="vegetation_winter_2015")
+plot(alb1_cropped, main="albedo_winter_2015")
+plot(veg2_cropped, main="vegetation_winter_2016")
+plot(alb2_cropped, main="albedo_winter_2016")
+plot(veg3_cropped, main="vegetation_winter_2017")
+plot(alb3_cropped, main="albedo_winter_2017")
+
+par(mfrow=c(3,2))
+plot(veg4_cropped, main="vegetation_winter_2018")
+plot(alb4_cropped, main="albedo_winter_2018")
+plot(veg5_cropped, main="vegetation_winter_2019")
+plot(alb5_cropped, main="albedo_winter_2019")
+plot(veg6_cropped, main="vegetation_winter_2020")
+plot(alb6_cropped, main="albedo_winter_2020")
+
+# summer
+par(mfrow=c(3,2))
+plot(veg1b_cropped, main="vegetation_summer_2015")
+plot(alb1b_cropped, main="albedo_summer_2015")
+plot(veg2b_cropped, main="vegetation_summer_2016")
+plot(alb2b_cropped, main="albedo_summer_2016")
+plot(veg3b_cropped, main="vegetation_summer_2017")
+plot(alb3b_cropped, main="albedo_summer_2017")
+
+par(mfrow=c(3,2))
+plot(veg4b_cropped, main="vegetation_summer_2018")
+plot(alb4b_cropped, main="albedo_summer_2018")
+plot(veg5b_cropped, main="vegetation_summer_2019")
+plot(alb5b_cropped, main="albedo_summer_2019")
+plot(veg6b_cropped, main="vegetation_summer_2020")
+plot(alb6b_cropped, main="albedo_summer_2020")                
+
+
+#################################################################################
+
+
 ######### 2021 veg
 # raster
 veg20210101 <- raster("c_gls_NDVI300_202101010000_GLOBE_PROBAV_V1.0.1.nc")
