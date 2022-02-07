@@ -604,7 +604,7 @@ title(xlab="Years")
 title(ylab="Values")
 
 # create a legend at (1, g_range[2]) that is slightly smaller (cex) 
-legend("left", g_range[2], c("Vegetation","Albedo"), cex=0.5, 
+legend("left", g_range[2], c("Vegetation","Albedo"), cex=0.9, 
    col=c("dark green","dark red"), pch=21:22, lty=1:2)
 
 
@@ -688,7 +688,7 @@ title(xlab="Years")
 title(ylab="Values")
 
 # create a legend at (1, g_range[2]) that is slightly smaller (cex) 
-legend("left", g_range[2], c("Vegetation","Albedo"), cex=0.5, 
+legend("left", g_range[2], c("Vegetation","Albedo"), cex=0.9, 
    col=c("dark green","dark red"), pch=21:22, lty=1:2)
 
 
