@@ -1,6 +1,6 @@
 # my project 
 
-# The Leaf Area Index is defined as half the total area of green elements of the canopy per unit horizontal ground area. 
+# The Leaf Area Index (LAI) is defined as half the total area of green elements of the canopy per unit horizontal ground area. 
 
 # The satellite-derived value corresponds to the total green LAI of all the canopy layers, including the understory which may represent a very significant contribution, 
 # particularly for forests. Practically, the LAI quantifies the thickness of the vegetation cover.
@@ -69,6 +69,16 @@ stackaldh <- stack(importaldh)
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 aldh_cropped <- crop(stackaldh, ext)
 
+
+# create a list with the images
+rlistlai <- list.files(pattern = "LAI") 
+# import single layers images
+importlai <- lapply(rlistlai, raster)
+# put all the images together
+stacklai <- stack(importlai) 
+# crop the stack
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+lai_cropped <- crop(stacklai, ext)
 
 
 # create raster objects from files, import the rasters
@@ -372,126 +382,6 @@ albsum <- stack(alb1b_cropped, alb2b_cropped, alb3b_cropped, alb4b_cropped, alb5
 # plot(albsum)
         
 
-
-# create multi paneled plottings
-
-# winter veg
-par(mfrow=c(2,3))
-plot(veg1_cropped, main="winter_2015")
-plot(veg2_cropped, main="winter_2016")
-plot(veg3_cropped, main="winter_2017")
-plot(veg4_cropped, main="winter_2018")
-plot(veg5_cropped, main="winter_2019")
-plot(veg6_cropped, main="winter_2020")
-
-# summer veg                
-par(mfrow=c(2,3))
-plot(veg1b_cropped, main="summer_2015")
-plot(veg2b_cropped, main="summer_2016")
-plot(veg3b_cropped, main="summer_2017")
-plot(veg4b_cropped, main="summer_2018")
-plot(veg5b_cropped, main="summer_2019")
-plot(veg6b_cropped, main="summer_2020")                
- 
-# veg first half   
-par(mfrow=c(3,2))
-plot(veg1_cropped, main="winter_2015")
-plot(veg1b_cropped, main="summer_2015")
-plot(veg2_cropped, main="winter_2016")
-plot(veg2b_cropped, main="summer_2016")
-plot(veg3_cropped, main="winter_2017")
-plot(veg3b_cropped, main="summer_2017")
-                
-# veg second half                              
-par(mfrow=c(3,2))              
-plot(veg4_cropped, main="winter_2018")
-plot(veg4b_cropped, main="summer_2018")
-plot(veg5_cropped, main="winter_2019")
-plot(veg5b_cropped, main="summer_2019")
-plot(veg6_cropped, main="winter_2020")
-plot(veg6b_cropped, main="summer_2020")                
-
-             
-
-
-# winter alb
-par(mfrow=c(2,3))
-plot(alb1_cropped, main="winter_2015")
-plot(alb2_cropped, main="winter_2016")
-plot(alb3_cropped, main="winter_2017")
-plot(alb4_cropped, main="winter_2018")
-plot(alb5_cropped, main="winter_2019")
-plot(alb6_cropped, main="winter_2020")
-
-
-# summer alb
-par(mfrow=c(2,3))
-plot(alb1b_cropped, main="summer_2015")
-plot(alb2b_cropped, main="summer_2016")
-plot(alb3b_cropped, main="summer_2017")
-plot(alb4b_cropped, main="summer_2018")
-plot(alb5b_cropped, main="summer_2019")
-plot(alb6b_cropped, main="summer_2020")                
-
-
-# alb first half
-par(mfrow=c(3,2))
-plot(alb1_cropped, main="winter_2015")
-plot(alb1b_cropped, main="summer_2015")
-plot(alb2_cropped, main="winter_2016")
-plot(alb2b_cropped, main="summer_2016")
-plot(alb3_cropped, main="winter_2017") 
-plot(alb3b_cropped, main="summer_2017")
-               
-                
-# alb second half
-par(mfrow=c(3,2))
-plot(alb4_cropped, main="winter_2018")
-plot(alb4b_cropped, main="summer_2018")
-plot(alb5_cropped, main="winter_2019")
-plot(alb5b_cropped, main="summer_2019")
-plot(alb6_cropped, main="winter_2020")
-plot(alb6b_cropped, main="summer_2020")                
-
-
-
-
-### veg + alb
-# winter
-par(mfrow=c(3,2))
-plot(veg1_cropped, main="vegetation_winter_2015")
-plot(alb1_cropped, main="albedo_winter_2015")
-plot(veg2_cropped, main="vegetation_winter_2016")
-plot(alb2_cropped, main="albedo_winter_2016")
-plot(veg3_cropped, main="vegetation_winter_2017")
-plot(alb3_cropped, main="albedo_winter_2017")
-
-par(mfrow=c(3,2))
-plot(veg4_cropped, main="vegetation_winter_2018")
-plot(alb4_cropped, main="albedo_winter_2018")
-plot(veg5_cropped, main="vegetation_winter_2019")
-plot(alb5_cropped, main="albedo_winter_2019")
-plot(veg6_cropped, main="vegetation_winter_2020")
-plot(alb6_cropped, main="albedo_winter_2020")
-
-# summer
-par(mfrow=c(3,2))
-plot(veg1b_cropped, main="vegetation_summer_2015")
-plot(alb1b_cropped, main="albedo_summer_2015")
-plot(veg2b_cropped, main="vegetation_summer_2016")
-plot(alb2b_cropped, main="albedo_summer_2016")
-plot(veg3b_cropped, main="vegetation_summer_2017")
-plot(alb3b_cropped, main="albedo_summer_2017")
-
-par(mfrow=c(3,2))
-plot(veg4b_cropped, main="vegetation_summer_2018")
-plot(alb4b_cropped, main="albedo_summer_2018")
-plot(veg5b_cropped, main="vegetation_summer_2019")
-plot(alb5b_cropped, main="albedo_summer_2019")
-plot(veg6b_cropped, main="vegetation_summer_2020")
-plot(alb6b_cropped, main="albedo_summer_2020")                
-
-
 # all 
 # create a pdf with everything # pdf() # dev.off()
 # create single images: jpeg singles multi-paneled plottings  # jpeg() # dev.off()
@@ -751,10 +641,6 @@ plot(x, y, main = "Correlation",
 # no correlation
 
 
-
-rlist<-list.files(pattern = "LAI") # create a list with the images
-import <-lapply(rlist, raster) # import single layers images
-laistack<-stack(import) # put all the images together
 
 
 
