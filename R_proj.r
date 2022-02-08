@@ -228,7 +228,7 @@ x <- lai
 y <- aldh
 
 # plot with main and axis titles
-plot(x, y, main = "Correlation",
+plot(x, y, main = "Correlation (Bosco Ficuzza)",
      xlab = "Leaf Area", ylab = "Albedo",
      pch = 19, col = "brown")
 
