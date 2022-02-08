@@ -48,10 +48,10 @@ pacman::p_load(sp, rgdal, raster, rgeos, rasterVis,
 
 setwd("C:/lab//my/") 
 
-# create a list with the images
-rlistndvi <- list.files(pattern = "NDVI")
-# import single layers images
-importndvi <- lapply(rlistndvi, raster) 
+# list the images
+listndvi <- list.files(pattern = "NDVI")
+# apply a function to a list: import single layers images
+importndvi <- lapply(listndvi, raster) 
 # put all the images together
 stackndvi <- stack(importndvi) 
 # crop the stack: coordinates of Sicily
@@ -60,9 +60,9 @@ ndvi_cropped <- crop(stackndvi, ext)
 
 
 # create a list with the images
-rlistaldh <- list.files(pattern = "ALDH")
+listaldh <- list.files(pattern = "ALDH")
 # import single layers images
-importaldh <- lapply(rlistaldh, raster) 
+importaldh <- lapply(listaldh, raster) 
 # put all the images together
 stackaldh <- stack(importaldh)
 # crop the stack
@@ -71,16 +71,14 @@ aldh_cropped <- crop(stackaldh, ext)
 
 
 # create a list with the images
-rlistlai <- list.files(pattern = "LAI") 
+listlai <- list.files(pattern = "LAI") 
 # import single layers images
-importlai <- lapply(rlistlai, raster)
+importlai <- lapply(listlai, raster)
 # put all the images together
 stacklai <- stack(importlai) 
 # crop the stack
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 lai_cropped <- crop(stacklai, ext)
-
-
 
 
 # import spatialpoints
@@ -99,8 +97,13 @@ plot(cluster, add = TRUE)
 plot(lai_cropped[[1]])
 plot(cluster, add = TRUE)
 
-# graph
+
+
+
 # extract raster values: 4 chosen points each one
+aldh_values <- extract(aldh_cropped, cluster,
+                       method = "simple", df = TRUE)
+
 aldh2015_values <- extract(aldh_cropped[[1]], cluster, 
                           method = "simple", df = TRUE)
 aldh2016_values <- extract(aldh_cropped[[3]], cluster, 
@@ -114,6 +117,9 @@ aldh2019_values <- extract(aldh_cropped[[9]], cluster,
 aldh2020_values <- extract(aldh_cropped[[11]], cluster, 
                           method = "simple", df = TRUE)
 
+ndvi_values <- extract(ndvi_cropped, cluster, 
+                          method = "simple", df = TRUE)
+
 ndvi2015_values <- extract(ndvi_cropped[[1]], cluster, 
                           method = "simple", df = TRUE)
 ndvi2016_values <- extract(ndvi_cropped[[3]], cluster, 
@@ -125,6 +131,9 @@ ndvi2018_values <- extract(ndvi_cropped[[7]], cluster,
 ndvi2019_values <- extract(ndvi_cropped[[9]], cluster, 
                           method = "simple", df = TRUE)
 ndvi2020_values <- extract(ndvi_cropped[[11]], cluster, 
+                          method = "simple", df = TRUE)
+
+lai_values <- extract(lai_cropped, cluster, 
                           method = "simple", df = TRUE)
 
 lai2015_values <- extract(lai_cropped[[1]], cluster, 
@@ -171,7 +180,7 @@ title(main = "Vegetation of Bosco Ficuzza", col.main="black", font.main=4)
 
 aldh <- c(0.1196, 0.1055, 0.1029, 0.1169, 0.1210, 0.1208)
 plot(aldh, type = "o", col = "dark red")
-title(main = "Albedo of Bosco Ficuzza in winter", col.main="black", font.main=4)
+title(main = "Albedo of Bosco Ficuzza", col.main="black", font.main=4)
 
 lai <- c(1.666650, 3.333300, 1.899981, 1.733316, 1.966647, 1.899981)
 plot(lai, type = "o", col = "orange")
@@ -213,8 +222,8 @@ legend("topright", g_range[2], c("Normalized Difference Vegetation","Albedo", "L
 
 
 
-
-# scatterplot 
+# scatterplot bosco ficuzza
+# is there a correlation between lai and aldh?
 x <- lai
 y <- aldh
 
@@ -222,6 +231,7 @@ y <- aldh
 plot(x, y, main = "Correlation",
      xlab = "Leaf Area", ylab = "Albedo",
      pch = 19, col = "brown")
+
 
 
 
