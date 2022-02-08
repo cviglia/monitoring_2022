@@ -54,7 +54,7 @@ rlistndvi <- list.files(pattern = "NDVI")
 importndvi <- lapply(rlistndvi, raster) 
 # put all the images together
 stackndvi <- stack(importndvi) 
-# crop the stack
+# crop the stack: coordinates of Sicily
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 ndvi_cropped <- crop(stackndvi, ext)
 
@@ -100,48 +100,48 @@ plot(lai_cropped[[1]])
 plot(cluster, add = TRUE)
 
 # graph
-# extract raster values 
-aldh1_cropped_values <- extract(aldh_cropped[[1]], cluster, 
+# extract raster values: 4 chosen points each one
+aldh2015_values <- extract(aldh_cropped[[1]], cluster, 
                           method = "simple", df = TRUE)
-aldh2_cropped_values <- extract(aldh_cropped[[2]], cluster, 
+aldh2016_values <- extract(aldh_cropped[[3]], cluster, 
                           method = "simple", df = TRUE)
-aldh3_cropped_values <- extract(aldh_cropped[[3]], cluster, 
+aldh2017_values <- extract(aldh_cropped[[5]], cluster, 
                           method = "simple", df = TRUE)
-aldh4_cropped_values <- extract(aldh_cropped[[4]], cluster, 
+aldh2018_values <- extract(aldh_cropped[[7]], cluster, 
                           method = "simple", df = TRUE)
-aldh5_cropped_values <- extract(aldh_cropped[[5]], cluster, 
+aldh2019_values <- extract(aldh_cropped[[9]], cluster, 
                           method = "simple", df = TRUE)
-aldh6_cropped_values <- extract(aldh_cropped[[6]], cluster, 
-                          method = "simple", df = TRUE)
-
-ndvi1_cropped_values <- extract(ndvi_cropped[[1]], cluster, 
-                          method = "simple", df = TRUE)
-ndvi2_cropped_values <- extract(ndvi_cropped[[2]], cluster, 
-                          method = "simple", df = TRUE)
-ndvi3_cropped_values <- extract(ndvi_cropped[[3]], cluster, 
-                          method = "simple", df = TRUE)
-ndvi4_cropped_values <- extract(ndvi_cropped[[4]], cluster, 
-                          method = "simple", df = TRUE)
-ndvi5_cropped_values <- extract(ndvi_cropped[[5]], cluster, 
-                          method = "simple", df = TRUE)
-ndvi6_cropped_values <- extract(ndvi_cropped[[6]], cluster, 
+aldh2020_values <- extract(aldh_cropped[[11]], cluster, 
                           method = "simple", df = TRUE)
 
-lai1_cropped_values <- extract(lai_cropped[[1]], cluster, 
+ndvi2015_values <- extract(ndvi_cropped[[1]], cluster, 
                           method = "simple", df = TRUE)
-lai2_cropped_values <- extract(lai_cropped[[2]], cluster, 
+ndvi2016_values <- extract(ndvi_cropped[[3]], cluster, 
                           method = "simple", df = TRUE)
-lai3_cropped_values <- extract(lai_cropped[[3]], cluster, 
+ndvi2017_values <- extract(ndvi_cropped[[5]], cluster, 
                           method = "simple", df = TRUE)
-lai4_cropped_values <- extract(lai_cropped[[4]], cluster, 
+ndvi2018_values <- extract(ndvi_cropped[[7]], cluster, 
                           method = "simple", df = TRUE)
-lai5_cropped_values <- extract(lai_cropped[[5]], cluster, 
+ndvi2019_values <- extract(ndvi_cropped[[9]], cluster, 
                           method = "simple", df = TRUE)
-lai6_cropped_values <- extract(lai_cropped[[6]], cluster, 
+ndvi2020_values <- extract(ndvi_cropped[[11]], cluster, 
+                          method = "simple", df = TRUE)
+
+lai2015_values <- extract(lai_cropped[[1]], cluster, 
+                          method = "simple", df = TRUE)
+lai2016_values <- extract(lai_cropped[[2]], cluster, 
+                          method = "simple", df = TRUE)
+lai2017_values <- extract(lai_cropped[[3]], cluster, 
+                          method = "simple", df = TRUE)
+lai2018_values <- extract(lai_cropped[[4]], cluster, 
+                          method = "simple", df = TRUE)
+lai2019_values <- extract(lai_cropped[[5]], cluster, 
+                          method = "simple", df = TRUE)
+lai2020_values <- extract(lai_cropped[[6]], cluster, 
                           method = "simple", df = TRUE)
 
 
-# give names to the values of bosco ficuzza 
+# give names to the values of bosco ficuzza (the first of four)
 aldh1 <- 0.1196 # albedo bosco ficuzza 2015
 aldh2 <- 0.1055 # albedo bosco ficuzza 2016
 aldh3 <- 0.1029 # albedo bosco ficuzza 2017
@@ -164,7 +164,7 @@ lai5 <- 1.966647 # leaf area bosco ficuzza 2019
 lai6 <- 1.899981 # leaf area bosco ficuzza 2020
 
 
-# graph
+# single graphs
 ndvi <- c(0.59600002, 0.93200004, 0.9280000, 0.9280000, 0.9280000, 0.65200001)
 plot(ndvi, type = "o", col = "dark green")
 title(main = "Vegetation of Bosco Ficuzza", col.main="black", font.main=4)
@@ -178,6 +178,7 @@ plot(lai, type = "o", col = "orange")
 title(main = "Leaf Area of Bosco Ficuzza", col.main="black", font.main=4)
 
 
+# unite graphs 
 # calculate range from 0 to max value 
 g_range <- range(0, ndvi, aldh, lai)
 
