@@ -43,6 +43,16 @@ stackndvi <- stack(importndvi)
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 ndvi_cropped <- crop(stackndvi, ext)
 
+# list the images
+listswi <- list.files(pattern = "SWI")
+# apply a function to a list: import single layers images
+importswi <- lapply(listswi, raster) 
+# put all the images together
+stackswi <- stack(importswi) 
+# crop the stack: coordinates of Sicily
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+swi_cropped <- crop(stackswi, ext)
+
 
 # import spatialpoints
 cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
@@ -51,11 +61,12 @@ crs_wgs84 <- CRS(SRS_string = "EPSG:4326")
 slot(cluster, "proj4string") <- crs_wgs84
 plot(cluster)
 
-# plot NDVI and  , add points
+# plot NDVI and SWI, add points
 par(mfrow=c(1,2))
 plot(ndvi_cropped[[1]])
 plot(cluster, add = TRUE)
-
+plot(swi_cropped[[1]])
+plot(cluster, add = TRUE)
 
 
 
@@ -64,7 +75,7 @@ plot(cluster, add = TRUE)
 
 ndvi_values <- extract(ndvi_cropped, cluster, 
                           method = "simple", df = TRUE)
-
+# winter
 ndvi2015_values <- extract(ndvi_cropped[[1]], cluster, 
                           method = "simple", df = TRUE)
 ndvi2016_values <- extract(ndvi_cropped[[3]], cluster, 
@@ -79,21 +90,42 @@ ndvi2020_values <- extract(ndvi_cropped[[11]], cluster,
                           method = "simple", df = TRUE)
 
 
+swi_values <- extract(swi_cropped, cluster, 
+                          method = "simple", df = TRUE)
+# winter
+swi2015_values <- extract(swi_cropped[[1]], cluster, 
+                          method = "simple", df = TRUE)
+swi2016_values <- extract(swi_cropped[[3]], cluster, 
+                          method = "simple", df = TRUE)
+swi2017_values <- extract(swi_cropped[[5]], cluster, 
+                          method = "simple", df = TRUE)
+swi2018_values <- extract(swi_cropped[[7]], cluster, 
+                          method = "simple", df = TRUE)
+swi2019_values <- extract(swi_cropped[[9]], cluster, 
+                          method = "simple", df = TRUE)
+swi2020_values <- extract(swi_cropped[[11]], cluster, 
+                          method = "simple", df = TRUE)
+
+
 # give names to the values of bosco ficuzza (the first of four)
 
 
-ndvi1 <- 0.59600002 # vegetation index bosco ficuzza 2015
-ndvi2 <- 0.93200004 # vegetation index bosco ficuzza 2016
-ndvi3 <- 0.9280000  # vegetation index bosco ficuzza 2017
-ndvi4 <- 0.9280000  # vegetation index bosco ficuzza 2018
-ndvi5 <- 0.9280000  # vegetation index bosco ficuzza 2019
-ndvi6 <- 0.65200001 # vegetation index bosco ficuzza 2020
+ndvi2015 <- 0.59600002 # vegetation index bosco ficuzza winter 2015
+ndvi2016 <- 0.93200004 # vegetation index bosco ficuzza winter 2016
+ndvi2017 <- 0.9280000  # vegetation index bosco ficuzza winter 2017
+ndvi2018 <- 0.9280000  # vegetation index bosco ficuzza winter 2018
+ndvi2019 <- 0.9280000  # vegetation index bosco ficuzza winter 2019
+ndvi2020 <- 0.65200001 # vegetation index bosco ficuzza winter 2020
+
+swi2015 <-             # soil moisture index bosco ficuzza winter 2015
 
 
 # single graphs
 ndvi <- c(0.59600002, 0.93200004, 0.9280000, 0.9280000, 0.9280000, 0.65200001)
 plot(ndvi, type = "o", col = "dark green")
 title(main = "Vegetation of Bosco Ficuzza", col.main="black", font.main=4)
+
+swi <-
 
 
 # unite graphs 
