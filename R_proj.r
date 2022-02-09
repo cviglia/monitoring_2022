@@ -1,39 +1,39 @@
 # my project 
 
-# The Leaf Area Index (LAI) is defined as half the total area of green elements of the canopy per unit horizontal ground area. 
+# The Soil Water Index (SWI) quantifies the moisture condition at various depths in the soil. It is mainly driven by precipitations via the process of infiltration. 
 
-# The satellite-derived value corresponds to the total green LAI of all the canopy layers, including the understory which may represent a very significant contribution, 
-# particularly for forests. Practically, the LAI quantifies the thickness of the vegetation cover.
-
-# LAI is recognized as an Essential Climate Variable (ECV) by the Global Climate Observing System (GCOS).
+# Soil moisture is a very heterogeneous variable and varies on small scales with soil properties and drainage patterns. 
+# Satellite measurements integrate over relative large-scale areas, with the presence of vegetation adding complexity to the interpretation. 
+# The soil moisture, up to 5cm soil depth, is recognized as an Essential Climate Variable (ECV) by the Global Climate Observing System (GCOS). 
 
 # The Normalized Difference Vegetation Index (NDVI) is an indicator of the greenness of the biomes, a proxy to quantify the vegetation amount.
-
 # Even though it is not a physical property of the vegetation cover, it has a very simple formulation NDVI = (REF_nir – REF_red)/(REF_nir + REF_red) 
 # where REF_nir and REF_red are the spectral reflectances measured in the near infrared and red wavebands respectively, that makes it widely used for ecosystems monitoring.
-
-# The surface albedo quantifies the fraction of the sunlight reflected by the surface of the Earth. Different albedo concepts are defined
-# and we will focus on the directional albedo or directional-hemispherical reflectance. It is also called black-sky albedo and it is the integration of
-# the bi-directional reflectance over the viewing hemisphere. It assumes all energy is coming from a direct radiation from the sun and is computed for a specific time.
-
-# The Global Climate Observing System (GCOS) specified the black-sky albedo as an Essential Climate Variable and the product is required for climate change purposes.
-
-# Albedo is a key forcing parameter controlling the planetary radiative energy budget and the partitioning of radiative energy between the atmosphere and surface. 
-
-# The energy absorbed at the surface is used to drive vegetation processes such as evapotranspiration, photosynthesis and carbon assimilation, 
-# and govern temperature-related processes such as evaporation, and snow melt. 
-
-# Thus albedo varies in space and time as a result of both natural processes (e.g. changes in solar position, inundation and vegetation growth) 
-# and human activities (e.g. clearing and planting forests, sowing and harvesting crops, burning rangeland). It is a sensitive indicator of environmental vulnerability. 
-
-# Seasonal vegetation phenology can significantly alter surface albedo which in turn affects the global energy balance 
-# and the albedo warming/cooling feedbacks that impact climate change. 
-
 # The NDVI is widely used by the bio-geophysical community to monitor the vegetation state and disturbances to address a large range of applications, 
 # including forestry, agriculture, food security, water management.
 
 # Very low values of NDVI (0.1 and below) correspond to barren areas of rock, sand, or snow. Moderate values represent shrub and grassland (0.2 to 0.3), 
 # while high values indicate temperate and tropical rainforests (0.6 to 0.8).
+
+
+# The Leaf Area Index (LAI) is defined as half the total area of green elements of the canopy per unit horizontal ground area. 
+# The satellite-derived value corresponds to the total green LAI of all the canopy layers, including the understory which may represent a very significant contribution, 
+# particularly for forests. Practically, the LAI quantifies the thickness of the vegetation cover.
+# LAI is recognized as an Essential Climate Variable (ECV) by the Global Climate Observing System (GCOS).
+
+# The surface albedo quantifies the fraction of the sunlight reflected by the surface of the Earth. Different albedo concepts are defined
+# and we will focus on the directional albedo or directional-hemispherical reflectance. It is also called black-sky albedo and it is the integration of
+# the bi-directional reflectance over the viewing hemisphere. It assumes all energy is coming from a direct radiation from the sun and is computed for a specific time.
+# The Global Climate Observing System (GCOS) specified the black-sky albedo as an Essential Climate Variable and the product is required for climate change purposes.
+# Albedo is a key forcing parameter controlling the planetary radiative energy budget and the partitioning of radiative energy between the atmosphere and surface. 
+# The energy absorbed at the surface is used to drive vegetation processes such as evapotranspiration, photosynthesis and carbon assimilation, 
+# and govern temperature-related processes such as evaporation, and snow melt. 
+
+# Thus albedo varies in space and time as a result of both natural processes (e.g. changes in solar position, inundation and vegetation growth) 
+# and human activities (e.g. clearing and planting forests, sowing and harvesting crops, burning rangeland). It is a sensitive indicator of environmental vulnerability. 
+# Seasonal vegetation phenology can significantly alter surface albedo which in turn affects the global energy balance 
+# and the albedo warming/cooling feedbacks that impact climate change. 
+
 
 # coordinates of Sicily (longitude 11.9256 - 15.6528; latitude 35.4929 - 38.8122)
 
