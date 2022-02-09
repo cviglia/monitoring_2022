@@ -18,7 +18,7 @@
 # and the albedo warming/cooling feedbacks that impact climate change. 
 
 
-# Surface Soil Moisture (SSM) is the relative water content of the top few centimetres soil, describing how wet or dry the soil is in its topmost layer, expressed in percent saturation. 
+# Surface Soil Moisture (SSM) is the relative water content of the top few centimetres soil, describing how wet the soil is in its topmost layer, expressed in percent saturation. 
 # It is measured by satellite radar sensors and allows insights in local precipitation impacts and soil conditions.
 # SSM is thus both an integrator of climatic conditions and a driver of local weather and climate, and plays a major role in global water-, energy- and carbon- cycles. 
 # Soil Moisture is recognized as an Essential Climate Variable (ECV) by the Global Climate Observing System (GCOS). 
@@ -31,14 +31,13 @@
 # Very low values of NDVI (0.1 and below) correspond to barren areas of rock, sand, or snow. Moderate values represent shrub and grassland (0.2 to 0.3), 
 # while high values indicate temperate and tropical rainforests (0.6 to 0.8).
 
-
-
 # coordinates of Sicily (longitude 11.9256 - 15.6528; latitude 35.4929 - 38.8122)
 
 # bosco ficuzza long lat (13.40100, 37.91054)
 # parco dell'etna long lat (14.9910188438527,37.7484444540323)
 # parco delle madonie long lat (14.02685,37.86626)
 # riserva cavagrande long lat (15.0969771982218,36.9768781858837)
+
 
 # libraries
 pacman::p_load(sp, rgdal, raster, rgeos, rasterVis, 
@@ -78,7 +77,6 @@ stackaldh <- stack(importaldh)
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 aldh_cropped <- crop(stackaldh, ext)
 
-
 # create a list with the images
 listlai <- list.files(pattern = "LAI") 
 # import single layers images
@@ -89,6 +87,7 @@ stacklai <- stack(importlai)
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 lai_cropped <- crop(stacklai, ext)
 
+
 # import spatialpoints
 cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
 coordinates(cluster) <- ~Longitude+Latitude
@@ -96,14 +95,13 @@ crs_wgs84 <- CRS(SRS_string = "EPSG:4326")
 slot(cluster, "proj4string") <- crs_wgs84
 plot(cluster)
 
+
 # plot NDVI and SSM, add points
 par(mfrow=c(1,2))
 plot(ndvi_cropped[[1]])
 plot(cluster, add = TRUE)
 plot(ssm_cropped[[1]])
 plot(cluster, add = TRUE)
-
-
 
 # plot ALDH, LAI
 par(mfrow=c(1,2))
@@ -153,6 +151,7 @@ ssm2020_values <- extract(ssm_cropped[[11]], cluster,
 # values
 aldh_values <- extract(aldh_cropped, cluster,
                        method = "simple", df = TRUE)
+# winter
 
 aldh2015_values <- extract(aldh_cropped[[1]], cluster, 
                           method = "simple", df = TRUE)
@@ -202,12 +201,12 @@ swi2015 <-             # soil moisture index bosco ficuzza winter 2015
 
 
 
-aldh1 <- 0.1196 # albedo bosco ficuzza 2015
-aldh2 <- 0.1055 # albedo bosco ficuzza 2016
-aldh3 <- 0.1029 # albedo bosco ficuzza 2017
-aldh4 <- 0.1169 # albedo bosco ficuzza 2018
-aldh5 <- 0.1210 # albedo bosco ficuzza 2019
-aldh6 <- 0.1208 # albedo bosco ficuzza 2020
+aldh1 <- 0.1196 # albedo bosco ficuzza winter 2015
+aldh2 <- 0.1055 # albedo bosco ficuzza winter 2016
+aldh3 <- 0.1029 # albedo bosco ficuzza winter 2017
+aldh4 <- 0.1169 # albedo bosco ficuzza winter 2018
+aldh5 <- 0.1210 # albedo bosco ficuzza winter 2019
+aldh6 <- 0.1208 # albedo bosco ficuzza winter 2020
 
 
 
