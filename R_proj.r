@@ -1,5 +1,9 @@
 # my project 
 
+# It has been proven that drought phenomena are affecting southern Mediterranean areas. 
+# One of the effects of a persistent drought is a modification of the vegetation cover and biomass. 
+# The aim of my presentation is to monitor the evolution of this phenomenon in Sicily using remote sensing techniques. 
+
 # The Soil Water Index (SWI) quantifies the moisture condition at various depths in the soil. It is mainly driven by precipitations via the process of infiltration. 
 
 # Soil moisture is a very heterogeneous variable and varies on small scales with soil properties and drainage patterns. 
