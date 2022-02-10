@@ -1,5 +1,109 @@
 # useful but not now
 
+# The Leaf Area Index (LAI) is defined as half the total area of green elements of the canopy per unit horizontal ground area. 
+# The satellite-derived value corresponds to the total green LAI of all the canopy layers, including the understory which may represent a very significant contribution, 
+# particularly for forests. Practically, the LAI quantifies the thickness of the vegetation cover.
+# LAI is recognized as an Essential Climate Variable (ECV) by the Global Climate Observing System (GCOS).
+
+# The surface albedo quantifies the fraction of the sunlight reflected by the surface of the Earth. Different albedo concepts are defined
+# and we will focus on the directional albedo or directional-hemispherical reflectance. It is also called black-sky albedo and it is the integration of
+# the bi-directional reflectance over the viewing hemisphere. It assumes all energy is coming from a direct radiation from the sun and is computed for a specific time.
+# The Global Climate Observing System (GCOS) specified the black-sky albedo as an Essential Climate Variable and the product is required for climate change purposes.
+# Albedo is a key forcing parameter controlling the planetary radiative energy budget and the partitioning of radiative energy between the atmosphere and surface. 
+# The energy absorbed at the surface is used to drive vegetation processes such as evapotranspiration, photosynthesis and carbon assimilation, 
+# and govern temperature-related processes such as evaporation, and snow melt. 
+# Thus albedo varies in space and time as a result of both natural processes (e.g. changes in solar position, inundation and vegetation growth) 
+# and human activities (e.g. clearing and planting forests, sowing and harvesting crops, burning rangeland). It is a sensitive indicator of environmental vulnerability. 
+# Seasonal vegetation phenology can significantly alter surface albedo which in turn affects the global energy balance 
+# and the albedo warming/cooling feedbacks that impact climate change. 
+
+
+
+# create a list with the images
+listaldh <- list.files(pattern = "ALDH")
+# import single layers images
+importaldh <- lapply(listaldh, raster) 
+# put all the images together
+stackaldh <- stack(importaldh)
+# crop the stack
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+aldh_cropped <- crop(stackaldh, ext)
+
+# create a list with the images
+listlai <- list.files(pattern = "LAI") 
+# import single layers images
+importlai <- lapply(listlai, raster)
+# put all the images together
+stacklai <- stack(importlai) 
+# crop the stack
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+lai_cropped <- crop(stacklai, ext)
+
+
+
+# plot ALDH, LAI
+par(mfrow=c(1,2))
+plot(aldh_cropped[[1]])
+plot(cluster, add = TRUE)
+plot(lai_cropped[[1]])
+plot(cluster, add = TRUE)
+
+
+
+
+# values
+aldh_values <- extract(aldh_cropped, cluster,
+                       method = "simple", df = TRUE)
+# winter
+
+aldh2015_values <- extract(aldh_cropped[[1]], cluster, 
+                          method = "simple", df = TRUE)
+aldh2016_values <- extract(aldh_cropped[[3]], cluster, 
+                          method = "simple", df = TRUE)
+aldh2017_values <- extract(aldh_cropped[[5]], cluster, 
+                          method = "simple", df = TRUE)
+aldh2018_values <- extract(aldh_cropped[[7]], cluster, 
+                          method = "simple", df = TRUE)
+aldh2019_values <- extract(aldh_cropped[[9]], cluster, 
+                          method = "simple", df = TRUE)
+aldh2020_values <- extract(aldh_cropped[[11]], cluster, 
+                          method = "simple", df = TRUE)
+
+
+lai_values <- extract(lai_cropped, cluster, 
+                          method = "simple", df = TRUE)
+
+lai2015_values <- extract(lai_cropped[[1]], cluster, 
+                          method = "simple", df = TRUE)
+lai2016_values <- extract(lai_cropped[[2]], cluster, 
+                          method = "simple", df = TRUE)
+lai2017_values <- extract(lai_cropped[[3]], cluster, 
+                          method = "simple", df = TRUE)
+lai2018_values <- extract(lai_cropped[[4]], cluster, 
+                          method = "simple", df = TRUE)
+lai2019_values <- extract(lai_cropped[[5]], cluster, 
+                          method = "simple", df = TRUE)
+lai2020_values <- extract(lai_cropped[[6]], cluster, 
+                          method = "simple", df = TRUE)
+
+
+
+aldh1 <- 0.1196 # albedo bosco ficuzza winter 2015
+aldh2 <- 0.1055 # albedo bosco ficuzza winter 2016
+aldh3 <- 0.1029 # albedo bosco ficuzza winter 2017
+aldh4 <- 0.1169 # albedo bosco ficuzza winter 2018
+aldh5 <- 0.1210 # albedo bosco ficuzza winter 2019
+aldh6 <- 0.1208 # albedo bosco ficuzza winter 2020
+
+
+
+lai1 <- 1.666650 # leaf area bosco ficuzza 2015
+lai2 <- 3.333300 # leaf area bosco ficuzza 2016
+lai3 <- 1.899981 # leaf area bosco ficuzza 2017
+lai4 <- 1.733316 # leaf area bosco ficuzza 2018
+lai5 <- 1.966647 # leaf area bosco ficuzza 2019
+lai6 <- 1.899981 # leaf area bosco ficuzza 2020
+
 
 ################################################################### in alternative, long way
 
