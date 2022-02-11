@@ -1,17 +1,22 @@
 # my project 
 
-# Surface Soil Moisture (SSM) is the relative water content of the top few centimetres soil, describing how wet the soil is in its topmost layer, expressed in percent saturation. 
-# It is measured by satellite radar sensors and allows insights in local precipitation impacts and soil conditions.
-# SSM is thus both an integrator of climatic conditions and a driver of local weather and climate, and plays a major role in global water-, energy- and carbon- cycles. 
-# Soil Moisture is recognized as an Essential Climate Variable (ECV) by the Global Climate Observing System (GCOS). 
+# The Normalized Difference Water Index (NDWI) is known to be strongly related to the plant water content. It is therefore a very good proxy for plant water stress.  
+# It is obtained by the following equation: NDWI = (NIR - MIR)/ (NIR + MIR). While using Sentinel-2 Band 8 (NIR) and Band 12 (MIR).
+# Visible and Near Infrared (VNIR), Short Wave Infrared (SWIR).
+# The NDWI is a vegetation index sensitive to the water content of vegetation and is complementary to the NDVI. 
+# High NDWI values show a high water content of the vegetation.
 
 # The Normalized Difference Vegetation Index (NDVI) is an indicator of the greenness of the biomes, a proxy to quantify the vegetation amount.
 # Even though it is not a physical property of the vegetation cover, it has a very simple formulation NDVI = (REF_nir – REF_red)/(REF_nir + REF_red) 
 # where REF_nir and REF_red are the spectral reflectances measured in the near infrared and red wavebands respectively, that makes it widely used for ecosystems monitoring.
+# Using Sentinel-2 it is  expressed as (B8-B4)/(B8+B4).
 # The NDVI is widely used by the bio-geophysical community to monitor the vegetation state and disturbances to address a large range of applications, 
 # including forestry, agriculture, food security, water management.
 # Very low values of NDVI (0.1 and below) correspond to barren areas of rock, sand, or snow. Moderate values represent shrub and grassland (0.2 to 0.3), 
 # while high values indicate temperate and tropical rainforests (0.6 to 0.8).
+
+# https://gisgeography.com/sentinel-2-bands-combinations/
+# https://modis.gsfc.nasa.gov/about/specifications.php
 
 # coordinates of Sicily (longitude 11.9256 - 15.6528; latitude 35.4929 - 38.8122)
 
