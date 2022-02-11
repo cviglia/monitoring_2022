@@ -21,26 +21,6 @@
 # riserva cavagrande long lat (15.0969771982218,36.9768781858837)
 
 
-library(ggplot2)
-library(raster)
-data(lsat)
-
-## Calculate NDVI
-ndvi <- spectralIndices(lsat, red = "B3_dn", nir = "B4_dn", indices = "NDVI")
-ndvi
-ggR(ndvi, geom_raster = TRUE) +
-        scale_fill_gradientn(colours = c("black", "white")) 
-
-## Calculate all possible indices, given the provided bands 
-## Convert DNs to reflectance (required to calculate EVI and EVI2)
-mtlFile  <- system.file("external/landsat/LT52240631988227CUB02_MTL.txt", package="RStoolbox")
-lsat_ref <- radCor(lsat, mtlFile, method = "apref")
-
-SI <- spectralIndices(lsat_ref, red = "B3_tre", nir = "B4_tre")
-plot(SI)
-
-
-
 # libraries
 pacman::p_load(sp, rgdal, raster, rgeos, rasterVis, 
                RStoolbox, dplyr, writexl, ggplot2, ncdf4)
@@ -202,7 +182,48 @@ plot(x, y, main = "Correlation (Bosco Ficuzza)",
      pch = 19, col = "brown")
 
 
+########################################################################################################
+# require libraries
+pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis, 
+               RStoolbox, dplyr, writexl, ggplot2)
 
+# set working directory
+setwd("C:/lab//my/") 
+
+
+#################### NDVI Calculation
+# First create list of files with similar pattern by using "list.files()" function
+# In this case similar pattern can be "20180827" as it is used for each band
+# "list.files()" produce a character vector of the names of files or directories 
+# in the named directory
+rlist_20180827 <- list.files(path = wd, 
+                             pattern = "20180827", 
+                             full.names = TRUE)
+
+# Check the list
+rlist_20180827
+
+# Use "lapply()" function over a list of vector to import them
+import <- lapply(rlist_20180827, raster)
+import
+
+# Create a stack of the rasters for NDVI analysis by using "stack()" function
+# This function creates 1 layer raster from several
+rstack_20180827 <- stack(import)
+plotRGB(rstack_20180827, 3, 2, 1, stretch = "lin")
+
+# Calculate NDVI using "spectralindices()" function
+NDVI_20180827 <- spectralIndices(rstack_20180827, 
+                                 red = 3, nir = 4,
+                                 indices = "NDVI")
+plot(NDVI_20180827)
+
+
+# Extract NDVI values for each point by using the spatial points data frame
+NDVI_20180827 <- extract(NDVI_20180827, cluster, 
+                             method = "simple", df = TRUE)
+# Save NDVI raster as a .tif file
+writeRaster(NDVI_20180827, /C:/lab//my/"/NDVI_test.tif")
 
 
 
