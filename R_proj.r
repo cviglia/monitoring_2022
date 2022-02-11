@@ -17,6 +17,7 @@
 
 # https://gisgeography.com/sentinel-2-bands-combinations/
 # https://modis.gsfc.nasa.gov/about/specifications.php
+# https://apps.sentinel-hub.com/eo-browser/
 
 # coordinates of Sicily (longitude 11.9256 - 15.6528; latitude 35.4929 - 38.8122)
 
