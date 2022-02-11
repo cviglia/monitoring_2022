@@ -21,6 +21,7 @@
 # coordinates of Sicily (longitude 11.9256 - 15.6528; latitude 35.4929 - 38.8122)
 
 # bosco ficuzza long lat (13.40100, 37.91054)
+
 # parco dell'etna long lat (14.9910188438527,37.7484444540323)
 # parco delle madonie long lat (14.02685,37.86626)
 # riserva cavagrande long lat (15.0969771982218,36.9768781858837)
@@ -188,34 +189,31 @@ plot(x, y, main = "Correlation (Bosco Ficuzza)",
 
 
 ########################################################################################################
+
 # require libraries
 pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis, 
                RStoolbox, dplyr, writexl, ggplot2)
+
 
 # set working directory
 setwd("C:/lab//my/") 
 
 
 #################### NDVI Calculation
-# First create list of files with similar pattern by using "list.files()" function
-# In this case similar pattern can be "20180827" as it is used for each band
-# "list.files()" produce a character vector of the names of files or directories 
-# in the named directory
-rlist_20180827 <- list.files(path = wd, 
-                             pattern = "20180827", 
-                             full.names = TRUE)
+# create a list of files with similar pattern by using "list.files()" function
+# "list.files()" produce a character vector of the names of files or directories in the named directory
+rlist_NDVI <- list.files(pattern = "NDVI", 
+                         full.names = TRUE)
+rlist_NDVI
 
-# Check the list
-rlist_20180827
-
-# Use "lapply()" function over a list of vector to import them
-import <- lapply(rlist_20180827, raster)
+# use "lapply()" function over a list of vector to import them
+import <- lapply(rlist_NDVI, raster)
 import
 
-# Create a stack of the rasters for NDVI analysis by using "stack()" function
-# This function creates 1 layer raster from several
-rstack_20180827 <- stack(import)
-plotRGB(rstack_20180827, 3, 2, 1, stretch = "lin")
+# create a stack of the rasters for NDVI analysis by using "stack()" function
+# 1 layer raster from several
+rstack_NDVI <- stack(import)
+plotRGB(rstack_NDVI, 3, 2, 1, stretch = "lin")
 
 # Calculate NDVI using "spectralindices()" function
 NDVI_20180827 <- spectralIndices(rstack_20180827, 
