@@ -1,7 +1,7 @@
 # my project 
 
 # The Normalized Difference Water Index (NDWI) is known to be strongly related to the plant water content. It is therefore a very good proxy for plant water stress.  
-# It is obtained by the following equation: NDWI = (NIR - MIR)/ (NIR + MIR). While using Sentinel-2 Band 8 (NIR) and Band 12 (MIR).
+# It is obtained by the following equation: NDWI = (NIR - MIR)/ (NIR + MIR), using Sentinel-2 Band 8 (NIR = MODIS band 2) and Band 12 (MIR /SWIR= MODIS band 6).
 # Visible and Near Infrared (VNIR), Short Wave Infrared (SWIR).
 # The NDWI is a vegetation index sensitive to the water content of vegetation and is complementary to the NDVI. 
 # High NDWI values show a high water content of the vegetation.
