@@ -45,26 +45,34 @@ rlist_NDVI <- list.files(pattern = "NDVI",
 rlist_NDVI
 
 # use "lapply()" function over a list of vector to import them
-import <- lapply(rlist_NDVI, raster)
-import
+import_NDVI <- lapply(rlist_NDVI, raster)
+import_NDVI
 
 # create a stack of the rasters for NDVI analysis by using "stack()" function
 # 1 layer raster from several
-rstack_NDVI <- stack(import)
-plotRGB(rstack_NDVI, 3, 2, 1, stretch = "lin")
+stack_NDVI <- stack(import_NDVI)
+plotRGB(stack_NDVI, 3, 2, 1, stretch = "lin")
 
-# Calculate NDVI using "spectralindices()" function
-NDVI_20180827 <- spectralIndices(rstack_20180827, 
+# calculate NDVI using "spectralindices()" function
+NDVI <- spectralIndices(stack_NDVI, 
                                  red = 3, nir = 4,
                                  indices = "NDVI")
-plot(NDVI_20180827)
+plot(NDVI)
 
+# import spatialpoints
+cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
+coordinates(cluster) <- ~Longitude+Latitude
+crs_wgs84 <- CRS(SRS_string = "EPSG:4326")
+slot(cluster, "proj4string") <- crs_wgs84
+plot(cluster)
 
-# Extract NDVI values for each point by using the spatial points data frame
-NDVI_20180827 <- extract(NDVI_20180827, cluster, 
-                             method = "simple", df = TRUE)
-# Save NDVI raster as a .tif file
-writeRaster(NDVI_20180827, /C:/lab//my/"/NDVI_test.tif")
+# extract NDVI values for each point by using the spatial points data frame
+extr_NDVI <- extract(NDVI, cluster, 
+                     method = "simple", df = TRUE)
+???
+
+# save NDVI raster as a .tif file
+writeRaster(extr_NDVI, /C:/lab//my/"/NDVI_test.tif")
 
 
 
