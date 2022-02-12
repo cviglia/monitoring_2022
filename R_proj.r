@@ -36,28 +36,28 @@ pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis,
 # set working directory
 setwd("C:/lab//my/") 
 
+NIR <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 4)
+r <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 3)
+g <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 2)
+b <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 1)
 
-#################### NDVI Calculation
-# create a list of files with similar pattern by using "list.files()" function
-# "list.files()" produce a character vector of the names of files or directories in the named directory
-rlist_NDVI <- list.files(pattern = "NDVI", 
-                         full.names = TRUE)
-rlist_NDVI
 
-# use "lapply()" function over a list of vector to import them
-import_NDVI <- lapply(rlist_NDVI, raster)
-import_NDVI
+rgbndvi20161209 <- brick(b,g,r)
+plotRGB(rgbndvi20161209, r = 3, g = 2, b = 1, stretch = "lin")
 
-# create a stack of the rasters for NDVI analysis by using "stack()" function
-# 1 layer raster from several
-stack_NDVI <- stack(import_NDVI)
-plotRGB(stack_NDVI, 3, 2, 1, stretch = "lin")
+mbr <- brick("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg")
+plotRGB(mbr, r = 3, g = 2, b = 1, stretch = "lin")
+
+
+NDVI_20161209 <- (mbr$B8-mbr$B4)/(mbr$B8+mbr$B4)
+
+
 
 # calculate NDVI using "spectralindices()" function
-NDVI <- spectralIndices(stack_NDVI, 
-                                 red = 3, nir = 4,
-                                 indices = "NDVI")
-plot(NDVI)
+NDVI_20161209 <- spectralIndices(rgbndvi20161209, 
+                                red = 3, nir = 4,  
+                                index = "NDVI")
+plot(NDVI_20161209)
 
 # import spatialpoints
 cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
