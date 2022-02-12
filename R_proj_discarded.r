@@ -46,14 +46,6 @@ ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 ssm_cropped <- crop(stackssm, ext)
 
 
-# import spatialpoints
-cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
-coordinates(cluster) <- ~Longitude+Latitude
-crs_wgs84 <- CRS(SRS_string = "EPSG:4326")
-slot(cluster, "proj4string") <- crs_wgs84
-plot(cluster)
-
-
 # plot NDVI and SSM, add points
 par(mfrow=c(1,2))
 plot(ndvi_cropped[[1]])
