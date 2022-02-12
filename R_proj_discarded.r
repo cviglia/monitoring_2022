@@ -1,5 +1,47 @@
 # useful but not now
 
+# Require libraries
+pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis, 
+               RStoolbox, dplyr, writexl, ggplot2)
+
+# Create a working directory
+wd <- ("~/Downloads/Test/Test_Costanza/")
+
+#################### NDVI Calculation
+# First create list of files with similar pattern by using "list.files()" 
+# function
+# In this case similar pattern can be "20180827" as it is used for each band
+# "list.files()" produce a character vector of the names of files or directories 
+# in the named directory
+rlist_20180827 <- list.files(path = wd, 
+                             pattern = "20180827", 
+                             full.names = TRUE)
+
+# Check the list
+rlist_20180827
+
+# Use "lapply()" function over a list of vector to import them
+import <- lapply(rlist_20180827, raster)
+import
+
+# Create a stack of the rasters for NDVI analysis by using "stack()" function
+# This function creates 1 layer raster from several
+rstack_20180827 <- stack(import)
+plotRGB(rstack_20180827, 3, 2, 1, stretch = "lin")
+
+# Calculate NDVI using "spectralindices()" function
+NDVI_20180827 <- spectralIndices(rstack_20180827, 
+                                 red = 3, nir = 4,
+                                 indices = "NDVI")
+plot(NDVI_20180827)
+
+
+# Extract NDVI values for each point by using the spatial points data frame
+NDVI_20180827 <- extract(NDVI_20180827, cluster, 
+                             method = "simple", df = TRUE)
+# Save NDVI raster as a .tif file
+writeRaster(NDVI_20180827, "~/Downloads/Test/Test_Costanza/NDVI_test.tif")
+
 # The Leaf Area Index (LAI) is defined as half the total area of green elements of the canopy per unit horizontal ground area. 
 # The satellite-derived value corresponds to the total green LAI of all the canopy layers, including the understory which may represent a very significant contribution, 
 # particularly for forests. Practically, the LAI quantifies the thickness of the vegetation cover.
