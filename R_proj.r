@@ -36,20 +36,24 @@ pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis,
 # set working directory
 setwd("C:/lab//my/") 
 
-NIR <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 4)
-r <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 3)
-g <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 2)
-b <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 1)
+# NDWI
+r <- raster("ndwi2016.tif", band = 3)
+g <- raster("ndwi2016.tif", band = 2)
+b <- raster("ndwi2016.tif", band = 1)
+
+# r <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 3)
+# g <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 2)
+# b <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 1)
 
 
-rgbndvi20161209 <- brick(b,g,r)
-plotRGB(rgbndvi20161209, r = 3, g = 2, b = 1, stretch = "lin")
+rgbndwi20161209 <- brick(b,g,r)
+plotRGB(rgbndwi20161209, r = 3, g = 2, b = 1, stretch = "lin")
 
-mbr <- brick("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg")
+mbr <- brick("ndwi2016.tif")
 plotRGB(mbr, r = 3, g = 2, b = 1, stretch = "lin")
 
 
-NDVI_20161209 <- (mbr$B8-mbr$B4)/(mbr$B8+mbr$B4)
+NDWI_20161209 <- (mbr$B8-mbr$B12)/(mbr$B8+mbr$B12)
 
 
 
