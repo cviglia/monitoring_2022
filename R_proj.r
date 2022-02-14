@@ -24,7 +24,7 @@
 # bosco ficuzza long lat (13.40100, 37.91054)
 
 # require libraries
-pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis, 
+pacman::p_load(sf, sp, ncdf4, rgdal, raster, rgeos, rasterVis, 
                RStoolbox, dplyr, writexl, ggplot2)
 
 # set working directory
@@ -38,41 +38,66 @@ importndvi <- lapply(listndvi, raster)
 # put all the images together
 stackndvi <- stack(importndvi) 
 
-# creat the palette
+# create the palette
 cl <- colorRampPalette(c("chocolate4","darkgoldenrod4","darkolivegreen","chartreuse4","darkgreen"))(100)
 
+# give names
+ndvi2016 <- stackndvi[[1]]
+ndvi2017 <- stackndvi[[2]]
+ndvi2018 <- stackndvi[[3]]
+ndvi2019 <- stackndvi[[4]]
+ndvi2020 <- stackndvi[[5]]
+
 # plot the images with a palette
+png()
 par(mfrow=c(3,2))
 plot(stackndvi[[1]], col = cl, main = "NDVI2016")
 plot(stackndvi[[2]], col = cl, main = "NDVI2017")
 plot(stackndvi[[3]], col = cl, main = "NDVI2018")
 plot(stackndvi[[4]], col = cl, main = "NDVI2019")
 plot(stackndvi[[5]], col = cl, main = "NDVI2020")
-
+dev.off()
 
 # crop the stack: coordinates of Sicily
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 ndvi_cropped <- crop(stackndvi, ext)
 
-# plot all the cropped images together
+# give names
+ndvi16_sic <- ndvi_cropped[[1]]
+ndvi17_sic <- ndvi_cropped[[2]]
+ndvi18_sic <- ndvi_cropped[[3]]
+ndvi19_sic <- ndvi_cropped[[4]]
+ndvi20_sic <- ndvi_cropped[[5]]
+
+# plot the cropped images with a palette
+png()
 par(mfrow=c(3,2))
 plot(ndvi_cropped[[1]], col = cl, main = "NDVI2016")
 plot(ndvi_cropped[[2]], col = cl, main = "NDVI2017")
 plot(ndvi_cropped[[3]], col = cl, main = "NDVI2018")
 plot(ndvi_cropped[[4]], col = cl, main = "NDVI2019")
 plot(ndvi_cropped[[5]], col = cl, main = "NDVI2020")
+dev.off()
 
-
-# import spatialpoints
+# import spatialpoint
 cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
 coordinates(cluster) <- ~Longitude+Latitude
 crs_wgs84 <- CRS(SRS_string = "EPSG:4326")
 slot(cluster, "proj4string") <- crs_wgs84
 plot(cluster)
 
-# plot NDVI, add points
-plot(ndvi_cropped[[1]])
+# plot NDVI, add point
+plot(ndvi16_sic, col = cl)
 plot(cluster, add = TRUE)
+
+# plot with ggplot function 
+# palette cividis to include colour blind people
+ndvi2016_sic <- ggplot() + geom_raster(ndvi16_sic, mapping = aes(x = x, y = y, fill = NDVI2016)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2016")
+ndvi2017_sic <- ggplot() + geom_raster(ndvi17_sic, mapping = aes(x = x, y = y, fill = NDVI2017)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2017")
+ndvi2018_sic <- ggplot() + geom_raster(ndvi18_sic, mapping = aes(x = x, y = y, fill = NDVI2018)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2018")
+ndvi2019_sic <- ggplot() + geom_raster(ndvi19_sic, mapping = aes(x = x, y = y, fill = NDVI2019)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2019")
+ndvi2020_sic <- ggplot() + geom_raster(ndvi20_sic, mapping = aes(x = x, y = y, fill = NDVI2020)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2020")
+
 
 # NDWI from Sentinel-2
 r <- raster("ndwi2016.tif", band = 3)
