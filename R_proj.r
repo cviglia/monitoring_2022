@@ -36,32 +36,17 @@ pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis,
 # set working directory
 setwd("C:/lab//my/") 
 
-# NDWI
-r <- raster("ndwi2016.tif", band = 3)
-g <- raster("ndwi2016.tif", band = 2)
-b <- raster("ndwi2016.tif", band = 1)
+# NDVI from Copernicus
+# list the images
+listndvi <- list.files(pattern = "NDVI")
+# apply a function to a list: import single layers images
+importndvi <- lapply(listndvi, raster) 
+# put all the images together
+stackndvi <- stack(importndvi) 
 
-# r <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 3)
-# g <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 2)
-# b <- raster("NDVI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 1)
-
-
-rgbndwi20161209 <- brick(b,g,r)
-plotRGB(rgbndwi20161209, r = 3, g = 2, b = 1, stretch = "lin")
-
-mbr <- brick("ndwi2016.tif")
-plotRGB(mbr, r = 3, g = 2, b = 1, stretch = "lin")
-
-
-NDWI_20161209 <- (mbr$B8-mbr$B12)/(mbr$B8+mbr$B12)
-
-
-
-# calculate NDVI using "spectralindices()" function
-NDVI_20161209 <- spectralIndices(rgbndvi20161209, 
-                                red = 3, nir = 4,  
-                                index = "NDVI")
-plot(NDVI_20161209)
+# crop the stack: coordinates of Sicily
+ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
+ndvi_cropped <- crop(stackndvi, ext)
 
 # import spatialpoints
 cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
@@ -70,13 +55,20 @@ crs_wgs84 <- CRS(SRS_string = "EPSG:4326")
 slot(cluster, "proj4string") <- crs_wgs84
 plot(cluster)
 
-# extract NDVI values for each point by using the spatial points data frame
-extr_NDVI <- extract(NDVI, cluster, 
-                     method = "simple", df = TRUE)
-???
+# plot NDVI, add points
+plot(ndvi_cropped[[1]])
+plot(cluster, add = TRUE)
 
-# save NDVI raster as a .tif file
-writeRaster(extr_NDVI, /C:/lab//my/"/NDVI_test.tif")
+# NDWI from Sentinel-2
+r <- raster("ndwi2016.tif", band = 3)
+g <- raster("ndwi2016.tif", band = 2)
+b <- raster("ndwi2016.tif", band = 1)
+
+
+rgbndwi20161209 <- brick(b,g,r)
+plotRGB(rgbndwi20161209, r = 3, g = 2, b = 1, stretch = "lin")
+
+
 
 
 
