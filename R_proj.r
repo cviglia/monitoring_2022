@@ -23,15 +23,9 @@
 
 # bosco ficuzza long lat (13.40100, 37.91054)
 
-# parco dell'etna long lat (14.9910188438527,37.7484444540323)
-# parco delle madonie long lat (14.02685,37.86626)
-# riserva cavagrande long lat (15.0969771982218,36.9768781858837)
-
-
 # require libraries
 pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis, 
                RStoolbox, dplyr, writexl, ggplot2)
-
 
 # set working directory
 setwd("C:/lab//my/") 
@@ -44,9 +38,30 @@ importndvi <- lapply(listndvi, raster)
 # put all the images together
 stackndvi <- stack(importndvi) 
 
+# creat the palette
+cl <- colorRampPalette(c("chocolate4","darkgoldenrod4","darkolivegreen","chartreuse4","darkgreen"))(100)
+
+# plot the images with a palette
+par(mfrow=c(3,2))
+plot(stackndvi[[1]], col = cl, main = "NDVI2016")
+plot(stackndvi[[2]], col = cl, main = "NDVI2017")
+plot(stackndvi[[3]], col = cl, main = "NDVI2018")
+plot(stackndvi[[4]], col = cl, main = "NDVI2019")
+plot(stackndvi[[5]], col = cl, main = "NDVI2020")
+
+
 # crop the stack: coordinates of Sicily
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 ndvi_cropped <- crop(stackndvi, ext)
+
+# plot all the cropped images together
+par(mfrow=c(3,2))
+plot(ndvi_cropped[[1]], col = cl, main = "NDVI2016")
+plot(ndvi_cropped[[2]], col = cl, main = "NDVI2017")
+plot(ndvi_cropped[[3]], col = cl, main = "NDVI2018")
+plot(ndvi_cropped[[4]], col = cl, main = "NDVI2019")
+plot(ndvi_cropped[[5]], col = cl, main = "NDVI2020")
+
 
 # import spatialpoints
 cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
