@@ -1,5 +1,9 @@
 # useful but not now
 
+# parco dell'etna long lat (14.9910188438527,37.7484444540323)
+# parco delle madonie long lat (14.02685,37.86626)
+# riserva cavagrande long lat (15.0969771982218,36.9768781858837)
+
 # Require libraries
 pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis, 
                RStoolbox, dplyr, writexl, ggplot2)
