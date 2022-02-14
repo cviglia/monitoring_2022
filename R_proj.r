@@ -25,7 +25,7 @@
 
 # require libraries
 pacman::p_load(sf, sp, ncdf4, rgdal, raster, rgeos, rasterVis, 
-               RStoolbox, dplyr, writexl, ggplot2)
+               RStoolbox, dplyr, writexl, ggplot2, viridis)
 
 # set working directory
 setwd("C:/lab//my/") 
@@ -49,35 +49,31 @@ ndvi2019 <- stackndvi[[4]]
 ndvi2020 <- stackndvi[[5]]
 
 # plot the images with a palette
-png()
 par(mfrow=c(3,2))
-plot(stackndvi[[1]], col = cl, main = "NDVI2016")
-plot(stackndvi[[2]], col = cl, main = "NDVI2017")
-plot(stackndvi[[3]], col = cl, main = "NDVI2018")
-plot(stackndvi[[4]], col = cl, main = "NDVI2019")
-plot(stackndvi[[5]], col = cl, main = "NDVI2020")
-dev.off()
+plot(ndvi2016, col = cl, main = "NDVI2016")
+plot(ndvi2017, col = cl, main = "NDVI2017")
+plot(ndvi2018, col = cl, main = "NDVI2018")
+plot(ndvi2019, col = cl, main = "NDVI2019")
+plot(ndvi2020, col = cl, main = "NDVI2020")
 
 # crop the stack: coordinates of Sicily
 ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
-ndvi_cropped <- crop(stackndvi, ext)
+ndvicropped <- crop(stackndvi, ext)
 
 # give names
-ndvi16_sic <- ndvi_cropped[[1]]
-ndvi17_sic <- ndvi_cropped[[2]]
-ndvi18_sic <- ndvi_cropped[[3]]
-ndvi19_sic <- ndvi_cropped[[4]]
-ndvi20_sic <- ndvi_cropped[[5]]
+ndvi16_sic <- ndvicropped[[1]]
+ndvi17_sic <- ndvicropped[[2]]
+ndvi18_sic <- ndvicropped[[3]]
+ndvi19_sic <- ndvicropped[[4]]
+ndvi20_sic <- ndvicropped[[5]]
 
 # plot the cropped images with a palette
-png()
 par(mfrow=c(3,2))
-plot(ndvi_cropped[[1]], col = cl, main = "NDVI2016")
-plot(ndvi_cropped[[2]], col = cl, main = "NDVI2017")
-plot(ndvi_cropped[[3]], col = cl, main = "NDVI2018")
-plot(ndvi_cropped[[4]], col = cl, main = "NDVI2019")
-plot(ndvi_cropped[[5]], col = cl, main = "NDVI2020")
-dev.off()
+plot(ndvi16sic, col = cl, main = "NDVI2016")
+plot(ndvi17sic, col = cl, main = "NDVI2017")
+plot(ndvi18sic, col = cl, main = "NDVI2018")
+plot(ndvi19sic, col = cl, main = "NDVI2019")
+plot(ndvi20sic, col = cl, main = "NDVI2020")
 
 # import spatialpoint
 cluster <- read.csv(file = "Points_ext.csv", stringsAsFactors=FALSE)
@@ -87,17 +83,18 @@ slot(cluster, "proj4string") <- crs_wgs84
 plot(cluster)
 
 # plot NDVI, add point
-plot(ndvi16_sic, col = cl)
+plot(ndvi16sic, col = cl, main = "Bosco della Ficuzza")
 plot(cluster, add = TRUE)
 
 # plot with ggplot function 
 # palette cividis to include colour blind people
-ndvi2016_sic <- ggplot() + geom_raster(ndvi16_sic, mapping = aes(x = x, y = y, fill = NDVI2016)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2016")
-ndvi2017_sic <- ggplot() + geom_raster(ndvi17_sic, mapping = aes(x = x, y = y, fill = NDVI2017)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2017")
-ndvi2018_sic <- ggplot() + geom_raster(ndvi18_sic, mapping = aes(x = x, y = y, fill = NDVI2018)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2018")
-ndvi2019_sic <- ggplot() + geom_raster(ndvi19_sic, mapping = aes(x = x, y = y, fill = NDVI2019)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2019")
-ndvi2020_sic <- ggplot() + geom_raster(ndvi20_sic, mapping = aes(x = x, y = y, fill = NDVI2020)) + scale_fill_viridis(option="cividis"), fill="transparent", color="black", lwd=0.8) + ggtitle("NDVI 2020")
+ndvi2016_sic <- ggplot() + geom_raster(ndvi16_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.1)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2016") + labs(fill = "NDVI 2016")
+ndvi2017_sic <- ggplot() + geom_raster(ndvi17_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.2)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2017") + labs(fill = "NDVI 2017")
+ndvi2018_sic <- ggplot() + geom_raster(ndvi18_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.3)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2018") + labs(fill = "NDVI 2018")
+ndvi2019_sic <- ggplot() + geom_raster(ndvi19_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.4)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2019") + labs(fill = "NDVI 2019")
+ndvi2020_sic <- ggplot() + geom_raster(ndvi20_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.5)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2020") + labs(fill = "NDVI 2020")
 
+long lat?
 
 # NDWI from Sentinel-2
 r <- raster("ndwi2016.tif", band = 3)
