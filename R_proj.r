@@ -131,10 +131,6 @@ rgbndwi2016 <- brick(b, g, r)
 # make a Red-Green-Blue plot based on three layers
 plotRGB(rgbndwi2016, r = 3, g = 2, b = 1, stretch = "lin")
 
-# name
-p1 <- ggRGB(rgbndwi2016, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2016")
-
-
 # import specific bands 2017
 r2 <- raster("NDWI_2017-12-24-00_00_2017-12-24-23_59_Sentinel-2_L2A_.jpg", band = 3)
 g2 <- raster("NDWI_2017-12-24-00_00_2017-12-24-23_59_Sentinel-2_L2A_.jpg", band = 2)
@@ -145,10 +141,6 @@ rgbndwi2017 <- brick(b2, g2, r2)
 
 # make a Red-Green-Blue plot
 plotRGB(rgbndwi2017, r = 3, g = 2, b = 1, stretch = "lin")
-
-# name
-p2 <- ggRGB(rgbndwi2017, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2017")
-
 
 # import specific bands 2018
 r3 <- raster("NDWI_2018-10-25-00_00_2018-10-25-23_59_Sentinel-2_L2A_.jpg", band = 3)
@@ -161,10 +153,6 @@ rgbndwi2018 <- brick(b3, g3, r3)
 # make a Red-Green-Blue plot
 plotRGB(rgbndwi2018, r = 3, g = 2, b = 1, stretch = "lin")
 
-# name
-p3 <- ggRGB(rgbndwi2018, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2018")
-
-
 # import specific bands 2019
 r4 <- raster("NDWI_2019-12-04-00_00_2019-12-04-23_59_Sentinel-2_L2A_.jpg", band = 3)
 g4 <- raster("NDWI_2019-12-04-00_00_2019-12-04-23_59_Sentinel-2_L2A_.jpg", band = 2)
@@ -175,10 +163,6 @@ rgbndwi2019 <- brick(b4, g4, r4)
 
 # make a Red-Green-Blue plot
 plotRGB(rgbndwi2019, r = 3, g = 2, b = 1, stretch = "lin")
-
-# name
-p4 <- ggRGB(rgbndwi2019, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2019")
-
 
 # import specific bands 2019
 r5 <- raster("NDWI_2020-12-23-00_00_2020-12-23-23_59_Sentinel-2_L2A_.jpg", band = 3)
@@ -192,6 +176,10 @@ rgbndwi2020 <- brick(b5, g5, r5)
 plotRGB(rgbndwi2020, r = 3, g = 2, b = 1, stretch = "lin")
 
 # name
+p1 <- ggRGB(rgbndwi2016, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2016")
+p2 <- ggRGB(rgbndwi2017, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2017")
+p3 <- ggRGB(rgbndwi2018, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2018")
+p4 <- ggRGB(rgbndwi2019, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2019")
 p5 <- ggRGB(rgbndwi2020, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2020")
 
 # multiframe
