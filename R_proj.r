@@ -1,6 +1,6 @@
 # my project 
 
-# The Normalized Difference Water Index (NDWI) is known to be strongly related to the plant water content. It is therefore a very good proxy for plant water stress.  
+# The Normalized Difference Water Index (NDWI) is related to the plant water content. It is therefore a very good proxy for plant water stress.  
 # It is obtained by the following equation: NDWI = (NIR - SWIR)/ (NIR + SWIR), using Sentinel-2 Band 8 (NIR = MODIS band 2) and Band 12 (SWIR= MODIS band 6).
 # Visible and Near Infrared (VNIR), Short Wave Infrared (SWIR).
 # The NDWI is a vegetation index sensitive to the water content of vegetation and is complementary to the NDVI. 
@@ -10,9 +10,9 @@
 # Even though it is not a physical property of the vegetation cover, it has a very simple formulation NDVI = (REF_nir – REF_red)/(REF_nir + REF_red) 
 # where REF_nir and REF_red are the spectral reflectances measured in the near infrared and red wavebands respectively, that makes it widely used for ecosystems monitoring.
 # Using Sentinel-2 it is  expressed as (B8-B4)/(B8+B4).
-# The NDVI is widely used by the bio-geophysical community to monitor the vegetation state and disturbances to address a large range of applications, 
+# The NDVI is used by the bio-geophysical community to monitor the vegetation state and disturbances to address a large range of applications, 
 # including forestry, agriculture, food security, water management.
-# Very low values of NDVI (0.1 and below) correspond to barren areas of rock, sand, or snow. Moderate values represent shrub and grassland (0.2 to 0.3), 
+# Very low values of NDVI correspond to barren areas of rock, sand, or snow. Moderate values represent shrub and grassland (0.2 to 0.3), 
 # while high values indicate temperate and tropical rainforests (0.6 to 0.8).
 
 # https://gisgeography.com/sentinel-2-bands-combinations/
@@ -24,8 +24,8 @@
 # bosco ficuzza long lat (13.40100, 37.91054)
 
 # require libraries
-pacman::p_load(sf, sp, ncdf4, rgdal, raster, rgeos, rasterVis, 
-               RStoolbox, dplyr, ggplot2, viridis, patchwork, gridExtra)
+pacman::p_load(raster, ncdf4, ggplot2, RStoolbox, 
+               viridis, patchwork, gridExtra)
 
 # set working directory
 setwd("C:/lab//my/") 
