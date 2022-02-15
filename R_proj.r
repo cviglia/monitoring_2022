@@ -132,7 +132,7 @@ rgbndwi2016 <- brick(b, g, r)
 plotRGB(rgbndwi2016, r = 3, g = 2, b = 1, stretch = "lin")
 
 # name
-p1 <- ggRGB(rgbndwi2016, r = 3, g = 2, b = 1, stretch = "lin")
+p1 <- ggRGB(rgbndwi2016, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2016")
 
 
 # import specific bands 2017
@@ -147,7 +147,7 @@ rgbndwi2017 <- brick(b2, g2, r2)
 plotRGB(rgbndwi2017, r = 3, g = 2, b = 1, stretch = "lin")
 
 # name
-p2 <- ggRGB(rgbndwi2017, r = 3, g = 2, b = 1, stretch = "lin")
+p2 <- ggRGB(rgbndwi2017, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2017")
 
 
 # import specific bands 2018
@@ -162,7 +162,7 @@ rgbndwi2018 <- brick(b3, g3, r3)
 plotRGB(rgbndwi2018, r = 3, g = 2, b = 1, stretch = "lin")
 
 # name
-p3 <- ggRGB(rgbndwi2018, r = 3, g = 2, b = 1, stretch = "lin")
+p3 <- ggRGB(rgbndwi2018, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2018")
 
 
 # import specific bands 2019
@@ -177,7 +177,7 @@ rgbndwi2019 <- brick(b4, g4, r4)
 plotRGB(rgbndwi2019, r = 3, g = 2, b = 1, stretch = "lin")
 
 # name
-p4 <- ggRGB(rgbndwi2019, r = 3, g = 2, b = 1, stretch = "lin")
+p4 <- ggRGB(rgbndwi2019, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2019")
 
 
 # import specific bands 2019
@@ -192,9 +192,8 @@ rgbndwi2020 <- brick(b5, g5, r5)
 plotRGB(rgbndwi2020, r = 3, g = 2, b = 1, stretch = "lin")
 
 # name
-p5 <- ggRGB(rgbndwi2020, r = 3, g = 2, b = 1, stretch = "lin") + main = "2020"
+p5 <- ggRGB(rgbndwi2020, r = 3, g = 2, b = 1, stretch = "lin") + ggtitle("2020")
 
-png()
-p1+p2+p3+p4+p5
-dev.off()
+# multiframe
+(p2+p3)/(p4+p5)
 
