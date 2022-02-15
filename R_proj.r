@@ -61,11 +61,11 @@ ext <- c(11.9256, 15.6528, 35.4929, 38.8122)
 ndvicropped <- crop(stackndvi, ext)
 
 # give names
-ndvi16_sic <- ndvicropped[[1]]
-ndvi17_sic <- ndvicropped[[2]]
-ndvi18_sic <- ndvicropped[[3]]
-ndvi19_sic <- ndvicropped[[4]]
-ndvi20_sic <- ndvicropped[[5]]
+ndvi16sic <- ndvicropped[[1]]
+ndvi17sic <- ndvicropped[[2]]
+ndvi18sic <- ndvicropped[[3]]
+ndvi19sic <- ndvicropped[[4]]
+ndvi20sic <- ndvicropped[[5]]
 
 # plot the cropped images with a palette
 par(mfrow=c(3,2))
@@ -84,26 +84,28 @@ plot(cluster)
 
 # plot NDVI, add point
 plot(ndvi16sic, col = cl, main = "Bosco della Ficuzza")
-plot(cluster, add = TRUE)
+plot(cluster, add = TRUE, main = "Bosco della Ficuzza")
 
 # plot with ggplot function 
-# palette cividis to include colour blind people
-ndvi2016_sic <- ggplot() + geom_raster(ndvi16_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.1)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2016") + labs(fill = "NDVI 2016")
-ndvi2017_sic <- ggplot() + geom_raster(ndvi17_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.2)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2017") + labs(fill = "NDVI 2017")
-ndvi2018_sic <- ggplot() + geom_raster(ndvi18_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.3)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2018") + labs(fill = "NDVI 2018")
-ndvi2019_sic <- ggplot() + geom_raster(ndvi19_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.4)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2019") + labs(fill = "NDVI 2019")
-ndvi2020_sic <- ggplot() + geom_raster(ndvi20_sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.5)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2020") + labs(fill = "NDVI 2020")
+# palette cividis to include colourblind people
+ndvi2016_sic <- ggplot() + geom_raster(ndvi16sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.1)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2016") + labs(fill = "NDVI")
+ndvi2017_sic <- ggplot() + geom_raster(ndvi17sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.2)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2017") + labs(fill = "NDVI")
+ndvi2018_sic <- ggplot() + geom_raster(ndvi18sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.3)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2018") + labs(fill = "NDVI")
+ndvi2019_sic <- ggplot() + geom_raster(ndvi19sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.4)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2019") + labs(fill = "NDVI")
+ndvi2020_sic <- ggplot() + geom_raster(ndvi20sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.5)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2020") + labs(fill = "NDVI")
 
-long lat?
 
 # NDWI from Sentinel-2
-r <- raster("ndwi2016.tif", band = 3)
-g <- raster("ndwi2016.tif", band = 2)
-b <- raster("ndwi2016.tif", band = 1)
+# import specific bands
+r <- raster("NDWI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 3)
+g <- raster("NDWI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 2)
+b <- raster("NDWI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 1)
 
+# convert multiple layers in a brick
+rgbndwi2016 <- brick(b, g, r)
 
-rgbndwi20161209 <- brick(b,g,r)
-plotRGB(rgbndwi20161209, r = 3, g = 2, b = 1, stretch = "lin")
+# make a Red-Green-Blue plot based on three layers
+plotRGB(rgbndwi2016, r = 3, g = 2, b = 1, stretch = "lin")
 
 
 
