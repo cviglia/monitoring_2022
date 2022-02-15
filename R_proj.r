@@ -1,7 +1,7 @@
 # my project 
 
 # The Normalized Difference Water Index (NDWI) is known to be strongly related to the plant water content. It is therefore a very good proxy for plant water stress.  
-# It is obtained by the following equation: NDWI = (NIR - MIR)/ (NIR + MIR), using Sentinel-2 Band 8 (NIR = MODIS band 2) and Band 12 (MIR /SWIR= MODIS band 6).
+# It is obtained by the following equation: NDWI = (NIR - SWIR)/ (NIR + SWIR), using Sentinel-2 Band 8 (NIR = MODIS band 2) and Band 12 (SWIR= MODIS band 6).
 # Visible and Near Infrared (VNIR), Short Wave Infrared (SWIR).
 # The NDWI is a vegetation index sensitive to the water content of vegetation and is complementary to the NDVI. 
 # High NDWI values show a high water content of the vegetation.
@@ -25,7 +25,7 @@
 
 # require libraries
 pacman::p_load(sf, sp, ncdf4, rgdal, raster, rgeos, rasterVis, 
-               RStoolbox, dplyr, writexl, ggplot2, viridis)
+               RStoolbox, dplyr, ggplot2, viridis, patchwork, gridExtra)
 
 # set working directory
 setwd("C:/lab//my/") 
@@ -96,7 +96,31 @@ ndvi2020_sic <- ggplot() + geom_raster(ndvi20sic, mapping = aes(x = x, y = y, fi
 
 
 # NDWI from Sentinel-2
-# import specific bands
+# area of bosco ficuzza
+
+# list
+listndwi <- list.files(pattern = "NDWI")
+# import
+importndwi <- lapply(listndwi, raster) 
+# stack
+stackndwi <- stack(importndwi) 
+
+# give names
+ndwi2016 <- stackndwi[[1]]
+ndwi2017 <- stackndwi[[2]]
+ndwi2018 <- stackndwi[[3]]
+ndwi2019 <- stackndwi[[4]]
+ndwi2020 <- stackndwi[[5]]
+
+# plot together
+par(mfrow=c(3,2))
+plot(ndwi2016, main = "NDWI2016")
+plot(ndwi2017, main = "NDWI2017")
+plot(ndwi2018, main = "NDWI2018")
+plot(ndwi2019, main = "NDWI2019")
+plot(ndwi2020, main = "NDWI2020")
+
+# import specific bands 2016
 r <- raster("NDWI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 3)
 g <- raster("NDWI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 2)
 b <- raster("NDWI_2016-12-09-00_00_2016-12-09-23_59_Sentinel-2_L2A_.jpg", band = 1)
@@ -107,19 +131,70 @@ rgbndwi2016 <- brick(b, g, r)
 # make a Red-Green-Blue plot based on three layers
 plotRGB(rgbndwi2016, r = 3, g = 2, b = 1, stretch = "lin")
 
+# name
+p1 <- ggRGB(rgbndwi2016, r = 3, g = 2, b = 1, stretch = "lin")
 
 
+# import specific bands 2017
+r2 <- raster("NDWI_2017-12-24-00_00_2017-12-24-23_59_Sentinel-2_L2A_.jpg", band = 3)
+g2 <- raster("NDWI_2017-12-24-00_00_2017-12-24-23_59_Sentinel-2_L2A_.jpg", band = 2)
+b2 <- raster("NDWI_2017-12-24-00_00_2017-12-24-23_59_Sentinel-2_L2A_.jpg", band = 1)
+
+# convert multiple layers in a brick
+rgbndwi2017 <- brick(b2, g2, r2)
+
+# make a Red-Green-Blue plot
+plotRGB(rgbndwi2017, r = 3, g = 2, b = 1, stretch = "lin")
+
+# name
+p2 <- ggRGB(rgbndwi2017, r = 3, g = 2, b = 1, stretch = "lin")
 
 
+# import specific bands 2018
+r3 <- raster("NDWI_2018-10-25-00_00_2018-10-25-23_59_Sentinel-2_L2A_.jpg", band = 3)
+g3 <- raster("NDWI_2018-10-25-00_00_2018-10-25-23_59_Sentinel-2_L2A_.jpg", band = 2)
+b3 <- raster("NDWI_2018-10-25-00_00_2018-10-25-23_59_Sentinel-2_L2A_.jpg", band = 1)
+
+# convert multiple layers in a brick
+rgbndwi2018 <- brick(b3, g3, r3)
+
+# make a Red-Green-Blue plot
+plotRGB(rgbndwi2018, r = 3, g = 2, b = 1, stretch = "lin")
+
+# name
+p3 <- ggRGB(rgbndwi2018, r = 3, g = 2, b = 1, stretch = "lin")
 
 
+# import specific bands 2019
+r4 <- raster("NDWI_2019-12-04-00_00_2019-12-04-23_59_Sentinel-2_L2A_.jpg", band = 3)
+g4 <- raster("NDWI_2019-12-04-00_00_2019-12-04-23_59_Sentinel-2_L2A_.jpg", band = 2)
+b4 <- raster("NDWI_2019-12-04-00_00_2019-12-04-23_59_Sentinel-2_L2A_.jpg", band = 1)
+
+# convert multiple layers in a brick
+rgbndwi2019 <- brick(b4, g4, r4)
+
+# make a Red-Green-Blue plot
+plotRGB(rgbndwi2019, r = 3, g = 2, b = 1, stretch = "lin")
+
+# name
+p4 <- ggRGB(rgbndwi2019, r = 3, g = 2, b = 1, stretch = "lin")
 
 
+# import specific bands 2019
+r5 <- raster("NDWI_2020-12-23-00_00_2020-12-23-23_59_Sentinel-2_L2A_.jpg", band = 3)
+g5 <- raster("NDWI_2020-12-23-00_00_2020-12-23-23_59_Sentinel-2_L2A_.jpg", band = 2)
+b5 <- raster("NDWI_2020-12-23-00_00_2020-12-23-23_59_Sentinel-2_L2A_.jpg", band = 1)
 
+# convert multiple layers in a brick
+rgbndwi2020 <- brick(b5, g5, r5)
 
+# make a Red-Green-Blue plot
+plotRGB(rgbndwi2020, r = 3, g = 2, b = 1, stretch = "lin")
 
+# name
+p5 <- ggRGB(rgbndwi2020, r = 3, g = 2, b = 1, stretch = "lin") + main = "2020"
 
-
-
-
+png()
+p1+p2+p3+p4+p5
+dev.off()
 
