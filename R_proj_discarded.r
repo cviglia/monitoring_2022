@@ -6,8 +6,8 @@
 
 # Require libraries
 pacman::p_load(sf, sp, rgdal, raster, rgeos, rasterVis, 
-               RStoolbox, dplyr, writexl, ggplot2)
-
+               RStoolbox, dplyr, writexl, ggplot2,      
+               
 # Create a working directory
 wd <- ("~/Downloads/Test/Test_Costanza/")
 
