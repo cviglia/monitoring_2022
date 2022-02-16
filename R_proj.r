@@ -87,6 +87,7 @@ plot(ndvi16sic, col = cl, main = "Bosco della Ficuzza")
 plot(cluster, add = TRUE, main = "Bosco della Ficuzza")
 
 # plot with ggplot function 
+# rstoolbox
 # palette cividis to include colourblind people
 ndvi2016_sic <- ggplot() + geom_raster(ndvi16sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.1)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2016") + labs(fill = "NDVI")
 ndvi2017_sic <- ggplot() + geom_raster(ndvi17sic, mapping = aes(x = x, y = y, fill = Normalized.Difference.Vegetation.Index.333M.2)) + scale_fill_viridis(option="cividis") + ggtitle("NDVI in December 2017") + labs(fill = "NDVI")
